@@ -1,6 +1,8 @@
 'use client';
 
 import Link from "next/link";
+import { motion } from "framer-motion";
+import type { ReactNode, ElementType } from "react";
 
 const sections = {
   audience: "#audience",
@@ -12,11 +14,49 @@ const sections = {
   contact: "#contact",
 };
 
+const fadeInUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const fadeIn = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+};
+
+type FadeInSectionProps = {
+  id?: string;
+  children: ReactNode;
+  delay?: number;
+};
+
+function FadeInSection({ id, children, delay = 0 }: FadeInSectionProps) {
+  return (
+    <motion.section
+      id={id}
+      variants={fadeInUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.5, delay }}
+      className="space-y-5"
+    >
+      {children}
+    </motion.section>
+  );
+}
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-slate-950 text-slate-50">
       {/* Шапка */}
-      <header className="sticky top-0 z-20 border-b border-slate-800 bg-slate-950/80 backdrop-blur">
+      <motion.header
+        initial="hidden"
+        animate="visible"
+        variants={fadeIn}
+        transition={{ duration: 0.4 }}
+        className="sticky top-0 z-20 border-b border-slate-800 bg-slate-950/80 backdrop-blur"
+      >
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
           <div className="flex items-center gap-2">
             <span className="text-lg font-semibold tracking-tight">
@@ -50,7 +90,7 @@ export default function Home() {
             Получить консультацию
           </a>
         </div>
-      </header>
+      </motion.header>
 
       {/* Контент */}
       <div className="mx-auto max-w-5xl px-4 pb-16 pt-10 space-y-24">
@@ -437,6 +477,92 @@ function CaseCard({ title, text }: CaseCardProps) {
     <div className="h-full rounded-xl border border-slate-800 bg-slate-900 p-4 text-sm text-slate-200">
       <h3 className="mb-2 text-sm font-semibold text-slate-50">{title}</h3>
       <p className="text-slate-300">{text}</p>
+    </div>
+  );
+}
+
+type AnimatedCardProps = {
+  children: ReactNode;
+};
+
+function AnimatedCard({ children }: AnimatedCardProps) {
+  return (
+    <motion.div
+      variants={fadeInUp}
+      whileHover={{ y: -4, transition: { duration: 0.15 } }}
+      className="h-full"
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+type BulletGridProps = {
+  items: string[];
+};
+
+function BulletGrid({ items }: BulletGridProps) {
+  return (
+    <motion.ul
+      variants={fadeInUp}
+      className="grid gap-2 text-sm text-slate-200 sm:grid-cols-2"
+    >
+      {items.map((item) => (
+        <li key={item}>• {item}</li>
+      ))}
+    </motion.ul>
+  );
+}
+
+type FieldProps =
+  | {
+      as?: "input";
+      label: string;
+      required?: boolean;
+      placeholder?: string;
+    }
+  | {
+      as: "textarea";
+      label: string;
+      required?: boolean;
+      placeholder?: string;
+      rows?: number;
+    };
+
+function Field(props: FieldProps) {
+  const common =
+    "w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-indigo-500";
+
+  if (props.as === "textarea") {
+    const { label, required, placeholder, rows = 3 } = props;
+    return (
+      <div className="space-y-1">
+        <label className="text-xs text-slate-300">
+          {label}
+          {required && "*"}
+        </label>
+        <textarea
+          rows={rows}
+          className={common}
+          placeholder={placeholder}
+          required={required}
+        />
+      </div>
+    );
+  }
+
+  const { label, required, placeholder } = props;
+  return (
+    <div className="space-y-1">
+      <label className="text-xs text-slate-300">
+        {label}
+        {required && "*"}
+      </label>
+      <input
+        className={common}
+        placeholder={placeholder}
+        required={required}
+      />
     </div>
   );
 }
