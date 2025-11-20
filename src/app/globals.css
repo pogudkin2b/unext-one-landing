@@ -1,3 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --color-midnight: 10 20 15;
+    --color-deep-navy: 15 28 20;
+    --color-electric-cyan: 80 209 107;
+    --color-bright-green: 88 232 119;
+    --color-amber: 231 227 145;
+    --color-silver: 209 219 214;
+    --gradient-mesh: linear-gradient(135deg, rgba(80, 209, 107, 0.03) 0%, rgba(231, 227, 145, 0.03) 100%);
+  }
+
+  body {
+    @apply bg-[rgb(var(--color-midnight))] text-[rgb(var(--color-silver))];
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+    font-weight: 700;
+  }
+
+  * {
+    @apply scroll-smooth;
+  }
+}
+
+@layer utilities {
+  .text-gradient-cyan {
+    @apply bg-gradient-to-r from-[rgb(var(--color-electric-cyan))] to-[rgb(var(--color-amber))] bg-clip-text text-transparent;
+  }
+
+  .glow-cyan {
+    text-shadow: 0 0 20px rgba(80, 209, 107, 0.5);
+  }
+
+  .border-glow {
+    box-shadow: 0 0 20px rgba(80, 209, 107, 0.15), inset 0 0 20px rgba(80, 209, 107, 0.05);
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .mesh-gradient {
+    background:
+      radial-gradient(at 20% 30%, rgba(80, 209, 107, 0.08) 0px, transparent 50%),
+      radial-gradient(at 80% 70%, rgba(231, 227, 145, 0.08) 0px, transparent 50%),
+      radial-gradient(at 50% 50%, rgba(15, 28, 20, 1) 0px, transparent 100%);
+  }
+
+  .legal-pattern {
+    background-image:
+      linear-gradient(rgba(80, 209, 107, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(80, 209, 107, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--color-midnight));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(80, 209, 107, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(80, 209, 107, 0.5);
+}
