@@ -191,8 +191,8 @@ export default function Home() {
 
             {/* Heading - optimized for 2 lines */}
             <h1 className="mx-auto max-w-5xl text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Юридическая поддержка роста: от SAFE до{" "}
-              <span className="text-gradient-cyan">M&A</span> — быстро, понятно и без воды
+              Юридическая поддержка роста:{" "}
+              <span className="text-gradient-cyan">от SAFE до M&A</span> — быстро, понятно и без воды
             </h1>
 
             {/* Subheading - optimized for 2 lines */}
