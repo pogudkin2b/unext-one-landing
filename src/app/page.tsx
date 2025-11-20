@@ -152,29 +152,31 @@ export default function Home() {
       <div className="relative z-10 mx-auto max-w-6xl px-6 pb-20 pt-16 space-y-32">
         {/* Hero */}
         <FadeInSection id="hero">
-          <motion.div
-            variants={scaleIn}
-            className="inline-flex items-center gap-2 rounded-full border border-[rgba(var(--color-electric-cyan),0.3)] bg-[rgba(var(--color-deep-navy),0.6)] px-4 py-1.5 text-xs text-[rgb(var(--color-silver))] backdrop-blur-sm"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[rgb(var(--color-amber))] opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-[rgb(var(--color-amber))]" />
-            </span>
-            Юридический партнёр для роста бизнеса — от стартапа до сделки, от фаундера до инвестора, от корпоративной структуры до DAO.
-          </motion.div>
+          <div className="flex justify-center">
+            <motion.div
+              variants={scaleIn}
+              className="inline-flex items-center gap-2 rounded-full border border-[rgba(var(--color-electric-cyan),0.3)] bg-[rgba(var(--color-deep-navy),0.6)] px-4 py-1.5 text-xs text-[rgb(var(--color-silver))] backdrop-blur-sm"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[rgb(var(--color-amber))] opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-[rgb(var(--color-amber))]" />
+              </span>
+              Юридический партнёр для роста бизнеса — от стартапа до сделки, от фаундера до инвестора, от корпоративной структуры до DAO.
+            </motion.div>
+          </div>
 
           <div className="mt-12 grid gap-12 lg:grid-cols-[1.5fr,1fr] lg:items-start">
-            <motion.div variants={fadeInUp} className="space-y-8">
+            <motion.div variants={fadeInUp} className="space-y-8 text-center lg:text-left">
               <h1 className="text-5xl font-bold leading-tight tracking-tight text-white sm:text-6xl lg:text-7xl">
                 Юридическая поддержка роста:{" "}
                 <span className="text-gradient-cyan">от SAFE до M&A</span> —
                 быстро, понятно и без воды
               </h1>
-              <p className="max-w-2xl text-lg leading-relaxed text-[rgb(var(--color-silver))]">
+              <p className="mx-auto max-w-2xl text-lg leading-relaxed text-[rgb(var(--color-silver))] lg:mx-0">
                 Помогаем стартапам, инвесторам, корпорациям и Web3-командам закрывать
                 юридические задачи на любой стадии: от первых договорённостей до крупных сделок.
               </p>
-              <div className="flex flex-wrap items-center gap-4">
+              <div className="flex flex-wrap items-center justify-center gap-4 lg:justify-start">
                 <motion.a
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -196,7 +198,7 @@ export default function Home() {
                   </motion.span>
                 </a>
               </div>
-              <p className="flex items-center gap-2 text-sm text-[rgb(var(--color-silver))]/60">
+              <p className="flex items-center justify-center gap-2 text-sm text-[rgb(var(--color-silver))]/60 lg:justify-start">
                 <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                 </svg>
@@ -249,18 +251,20 @@ export default function Home() {
 
         {/* Audience */}
         <FadeInSection id="audience">
-          <div className="space-y-3">
-            <motion.div
-              variants={fadeInUp}
-              className="inline-block rounded-full border border-[rgba(var(--color-electric-cyan),0.3)] bg-[rgba(var(--color-electric-cyan),0.1)] px-4 py-1 text-xs font-semibold tracking-wide text-[rgb(var(--color-electric-cyan))] backdrop-blur-sm"
-            >
-              НАШИ КЛИЕНТЫ
-            </motion.div>
+          <div className="space-y-3 text-center">
+            <div className="flex justify-center">
+              <motion.div
+                variants={fadeInUp}
+                className="inline-block rounded-full border border-[rgba(var(--color-electric-cyan),0.3)] bg-[rgba(var(--color-electric-cyan),0.1)] px-4 py-1 text-xs font-semibold tracking-wide text-[rgb(var(--color-electric-cyan))] backdrop-blur-sm"
+              >
+                НАШИ КЛИЕНТЫ
+              </motion.div>
+            </div>
             <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
               Работаем там, где бизнес двигается{" "}
               <span className="text-gradient-cyan">быстрее юристов</span>
             </h2>
-            <p className="max-w-3xl text-base text-[rgb(var(--color-silver))]">
+            <p className="mx-auto max-w-3xl text-base text-[rgb(var(--color-silver))]">
               Мы встраиваемся в реальный темп роста: стартапы, фонды, корпорации и Web3-команды,
               которым нужны решения, а не лекции по теории права.
             </p>
@@ -558,20 +562,22 @@ type SectionTitleProps = {
 
 function SectionTitle({ tag, title, subtitle }: SectionTitleProps) {
   return (
-    <div className="space-y-3">
+    <div className="space-y-3 text-center">
       {tag && (
-        <motion.div
-          variants={fadeInUp}
-          className="inline-block rounded-full border border-[rgba(var(--color-electric-cyan),0.3)] bg-[rgba(var(--color-electric-cyan),0.1)] px-4 py-1 text-xs font-semibold tracking-wide text-[rgb(var(--color-electric-cyan))] backdrop-blur-sm"
-        >
-          {tag}
-        </motion.div>
+        <div className="flex justify-center">
+          <motion.div
+            variants={fadeInUp}
+            className="inline-block rounded-full border border-[rgba(var(--color-electric-cyan),0.3)] bg-[rgba(var(--color-electric-cyan),0.1)] px-4 py-1 text-xs font-semibold tracking-wide text-[rgb(var(--color-electric-cyan))] backdrop-blur-sm"
+          >
+            {tag}
+          </motion.div>
+        </div>
       )}
       <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
         {title}
       </h2>
       {subtitle && (
-        <p className="max-w-3xl text-base text-[rgb(var(--color-silver))]">
+        <p className="mx-auto max-w-3xl text-base text-[rgb(var(--color-silver))]">
           {subtitle}
         </p>
       )}
