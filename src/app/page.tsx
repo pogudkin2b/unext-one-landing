@@ -253,17 +253,26 @@ export default function Home() {
                 className="space-y-4"
                 onSubmit={(e) => {
                   e.preventDefault();
-                  alert("Форма пока работает как демо. Подключите отправку позже.");
+                  const formData = new FormData(e.currentTarget);
+                  const name = formData.get('name');
+                  const contact = formData.get('contact');
+                  const task = formData.get('task');
+
+                  const subject = `Новая заявка от ${name}`;
+                  const body = `Имя: ${name}\nКонтакт: ${contact}\nЗадача: ${task || 'Не указана'}`;
+
+                  window.location.href = `mailto:info@unext.one?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
                 }}
               >
                 {/* Two-column layout for name and contact on desktop */}
                 <div className="grid gap-4 sm:grid-cols-2">
-                  <FormField label="Имя*" required placeholder="Как к вам обращаться?" />
-                  <FormField label="Email или Telegram*" required placeholder="@username или email" />
+                  <FormField name="name" label="Имя*" required placeholder="Как к вам обращаться?" />
+                  <FormField name="contact" label="Email или Telegram*" required placeholder="@username или email" />
                 </div>
 
                 {/* Task field - full width, reduced rows for compactness */}
                 <FormField
+                  name="task"
                   label="Кратко: задача (опционально)"
                   as="textarea"
                   rows={2}
@@ -507,16 +516,26 @@ export default function Home() {
                   className="space-y-5"
                   onSubmit={(e) => {
                     e.preventDefault();
-                    alert("В продакшене подключите отправку формы (почта, Telegram, CRM).");
+                    const formData = new FormData(e.currentTarget);
+                    const name = formData.get('name');
+                    const contact = formData.get('contact');
+                    const task = formData.get('task');
+
+                    const subject = `Новая заявка от ${name}`;
+                    const body = `Имя: ${name}\nКонтакт: ${contact}\nЗадача: ${task || 'Не указана'}`;
+
+                    window.location.href = `mailto:info@unext.one?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
                   }}
                 >
-                  <FormField label="Имя*" required placeholder="Как к вам обращаться?" />
+                  <FormField name="name" label="Имя*" required placeholder="Как к вам обращаться?" />
                   <FormField
+                    name="contact"
                     label="Email или Telegram*"
                     required
                     placeholder="email@company.com или @username"
                   />
                   <FormField
+                    name="task"
                     label="Кратко опишите задачу (опционально)"
                     as="textarea"
                     rows={4}
@@ -570,9 +589,20 @@ export default function Home() {
           transition={{ duration: 0.6 }}
           className="border-t border-[rgba(var(--color-electric-cyan),0.15)] pt-8 text-xs text-[rgb(var(--color-silver))]/60"
         >
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <p>© {new Date().getFullYear()} UNEXT.ONE — юридический партнёр для роста бизнеса.</p>
-            <p>От стартапа до сделки, от фаундера до инвестора, от корпструктуры до DAO.</p>
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="space-y-2">
+              <p>© {new Date().getFullYear()} UNEXT.ONE — юридический партнёр для роста бизнеса.</p>
+              <p>От стартапа до сделки, от фаундера до инвестора, от корпструктуры до DAO.</p>
+            </div>
+            <div className="space-y-1 text-right">
+              <p className="font-medium text-[rgb(var(--color-silver))]">Контакты:</p>
+              <a
+                href="mailto:info@unext.one"
+                className="block transition-colors hover:text-[rgb(var(--color-electric-cyan))]"
+              >
+                info@unext.one
+              </a>
+            </div>
           </div>
         </motion.footer>
       </div>
@@ -738,12 +768,14 @@ function DownloadLink({ text }: { text: string }) {
 type FormFieldProps =
   | {
       as?: "input";
+      name?: string;
       label: string;
       required?: boolean;
       placeholder?: string;
     }
   | {
       as: "textarea";
+      name?: string;
       label: string;
       required?: boolean;
       placeholder?: string;
@@ -755,13 +787,14 @@ function FormField(props: FormFieldProps) {
     "w-full rounded-lg border border-[rgba(var(--color-electric-cyan),0.2)] bg-[rgba(var(--color-deep-navy),0.5)] px-4 py-3 text-sm text-white placeholder:text-[rgb(var(--color-silver))]/40 outline-none transition-all focus:border-[rgba(var(--color-electric-cyan),0.5)] focus:ring-2 focus:ring-[rgba(var(--color-electric-cyan),0.1)]";
 
   if (props.as === "textarea") {
-    const { label, required, placeholder, rows = 3 } = props;
+    const { name, label, required, placeholder, rows = 3 } = props;
     return (
       <div className="space-y-1.5">
         <label className="text-xs font-medium text-[rgb(var(--color-silver))]">
           {label}
         </label>
         <textarea
+          name={name}
           rows={rows}
           className={common}
           placeholder={placeholder}
@@ -771,13 +804,14 @@ function FormField(props: FormFieldProps) {
     );
   }
 
-  const { label, required, placeholder } = props;
+  const { name, label, required, placeholder } = props;
   return (
     <div className="space-y-1.5">
       <label className="text-xs font-medium text-[rgb(var(--color-silver))]">
         {label}
       </label>
       <input
+        name={name}
         className={common}
         placeholder={placeholder}
         required={required}
