@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
+import { Rocket, TrendingUp, Building2, BarChart3, Network, type LucideIcon } from "lucide-react";
 
 const sections = {
   audience: "#audience",
@@ -251,42 +252,54 @@ export default function Home() {
 
         {/* Audience */}
         <FadeInSection id="audience">
-          <div className="space-y-3 text-center">
-            <div className="flex justify-center">
-              <motion.div
-                variants={fadeInUp}
-                className="inline-block rounded-full border border-[rgba(var(--color-electric-cyan),0.3)] bg-[rgba(var(--color-electric-cyan),0.1)] px-4 py-1 text-xs font-semibold tracking-wide text-[rgb(var(--color-electric-cyan))] backdrop-blur-sm"
-              >
-                НАШИ КЛИЕНТЫ
-              </motion.div>
-            </div>
-            <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-              Работаем там, где бизнес двигается{" "}
-              <span className="text-gradient-cyan">быстрее юристов</span>
-            </h2>
-            <p className="mx-auto max-w-3xl text-base text-[rgb(var(--color-silver))]">
-              Мы встраиваемся в реальный темп роста: стартапы, фонды, корпорации и Web3-команды,
-              которым нужны решения, а не лекции по теории права.
-            </p>
-          </div>
+          {/* Grid background for tech feel */}
+          <div className="relative -mx-6 rounded-2xl bg-gradient-to-b from-[rgba(var(--color-electric-cyan),0.02)] to-transparent p-6 sm:-mx-8 sm:p-8">
+            <div className="absolute inset-0 opacity-30" style={{
+              backgroundImage: `
+                linear-gradient(rgba(var(--color-electric-cyan), 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(var(--color-electric-cyan), 0.03) 1px, transparent 1px)
+              `,
+              backgroundSize: '32px 32px'
+            }} />
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="relative space-y-3 text-center">
+              <div className="flex justify-center">
+                <motion.div
+                  variants={fadeInUp}
+                  className="inline-block rounded-full border border-[rgba(var(--color-electric-cyan),0.3)] bg-[rgba(var(--color-electric-cyan),0.1)] px-4 py-1 text-xs font-semibold tracking-wide text-[rgb(var(--color-electric-cyan))] backdrop-blur-sm"
+                >
+                  НАШИ КЛИЕНТЫ
+                </motion.div>
+              </div>
+              <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
+                Работаем там, где бизнес двигается{" "}
+                <span className="text-gradient-cyan">быстрее юристов</span>
+              </h2>
+              <p className="mx-auto max-w-3xl text-base text-[rgb(var(--color-silver))]">
+                Мы встраиваемся в реальный темп роста: стартапы, фонды, корпорации и Web3-команды,
+                которым нужны решения, а не лекции по теории права.
+              </p>
+            </div>
+
+            <div className="relative mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              { icon: "🚀", label: "Стартапам", desc: "Оформляем сделки, структуру и IP", href: sections.startups },
-              { icon: "💰", label: "Инвесторам", desc: "Проверяем стартапы и защищаем сделки", href: sections.investors },
-              { icon: "🏢", label: "Корпорациям", desc: "Строим юридическую систему под рост и M&A", href: sections.corporates },
-              { icon: "📊", label: "COO и CFO", desc: "Снимаем рутину с юр-документов" },
-              { icon: "🌐", label: "Web3-командам", desc: "DAO, токены, AML — безопасно и понятно", href: sections.web3 },
+              { icon: Rocket, label: "Стартапам", desc: "Оформляем сделки, структуру и IP", href: sections.startups, badge: "Startup" },
+              { icon: TrendingUp, label: "Инвесторам", desc: "Проверяем стартапы и защищаем сделки", href: sections.investors, badge: "Investor" },
+              { icon: Building2, label: "Корпорациям", desc: "Строим юридическую систему под рост и M&A", href: sections.corporates, badge: "Corporate" },
+              { icon: BarChart3, label: "COO и CFO", desc: "Снимаем рутину с юр-документов", badge: "Executive" },
+              { icon: Network, label: "Web3-командам", desc: "DAO, токены, AML — безопасно и понятно", href: sections.web3, badge: "Web3" },
             ].map((item, i) => (
               <motion.div
                 key={item.label}
-                variants={fadeInUp}
-                custom={i}
-                whileHover={{ y: -8, transition: { duration: 0.2 } }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
               >
-                <AudienceCard {...item} />
+                <ClientCard {...item} />
               </motion.div>
             ))}
+            </div>
           </div>
         </FadeInSection>
 
@@ -530,25 +543,63 @@ export default function Home() {
 
 // Component definitions
 
-type AudienceCardProps = {
-  icon: string;
+type ClientCardProps = {
+  icon: LucideIcon;
   label: string;
   desc: string;
+  badge: string;
   href?: string;
 };
 
-function AudienceCard({ icon, label, desc, href }: AudienceCardProps) {
+function ClientCard({ icon: Icon, label, desc, badge, href }: ClientCardProps) {
   const Wrapper = href ? "a" : "div";
   return (
     <Wrapper
       href={href}
-      className="group relative block h-full overflow-hidden rounded-2xl border border-[rgba(var(--color-electric-cyan),0.2)] bg-gradient-to-br from-[rgba(var(--color-deep-navy),0.6)] to-[rgba(var(--color-midnight),0.6)] p-6 backdrop-blur-sm transition-all duration-300 hover:border-[rgba(var(--color-electric-cyan),0.5)] hover:shadow-lg hover:shadow-[rgba(var(--color-electric-cyan),0.2)]"
+      className="group relative block h-full cursor-pointer overflow-hidden rounded-xl border border-[rgba(var(--color-electric-cyan),0.15)] bg-[rgba(var(--color-deep-navy),0.4)] p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(var(--color-electric-cyan),0.4)] hover:bg-[rgba(var(--color-deep-navy),0.6)] hover:shadow-lg hover:shadow-[rgba(var(--color-electric-cyan),0.1)]"
     >
-      <div className="absolute inset-0 translate-y-full bg-gradient-to-br from-[rgba(var(--color-electric-cyan),0.05)] to-[rgba(var(--color-amber),0.05)] transition-transform duration-300 group-hover:translate-y-0" />
-      <div className="relative space-y-2">
-        <div className="text-3xl">{icon}</div>
-        <div className="text-lg font-semibold text-white">{label}</div>
-        <div className="text-sm text-[rgb(var(--color-silver))]">{desc}</div>
+      {/* Corner accent */}
+      <div className="absolute right-0 top-0 h-20 w-20 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+        <div className="absolute right-0 top-0 h-px w-8 bg-gradient-to-r from-transparent to-[rgb(var(--color-electric-cyan))]" />
+        <div className="absolute right-0 top-0 h-8 w-px bg-gradient-to-b from-[rgb(var(--color-electric-cyan))] to-transparent" />
+      </div>
+
+      {/* Status indicator */}
+      <div className="absolute right-4 top-4">
+        <div className="h-1.5 w-1.5 rounded-full bg-[rgb(var(--color-electric-cyan))] opacity-60" />
+      </div>
+
+      <div className="relative space-y-4">
+        {/* Icon and badge */}
+        <div className="flex items-start justify-between">
+          <div className="flex items-center gap-3">
+            {/* Decorative line */}
+            <div className="h-10 w-px bg-gradient-to-b from-[rgb(var(--color-electric-cyan))] to-transparent opacity-50" />
+
+            {/* Icon container */}
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-[rgba(var(--color-electric-cyan),0.2)] bg-[rgba(var(--color-electric-cyan),0.05)] transition-colors duration-300 group-hover:border-[rgba(var(--color-electric-cyan),0.4)] group-hover:bg-[rgba(var(--color-electric-cyan),0.1)]">
+              <Icon className="h-5 w-5 text-[rgb(var(--color-electric-cyan))]" strokeWidth={2} />
+            </div>
+          </div>
+
+          {/* Badge */}
+          <span className="rounded-md border border-[rgba(var(--color-electric-cyan),0.2)] bg-[rgba(var(--color-electric-cyan),0.05)] px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-[rgb(var(--color-electric-cyan))]">
+            {badge}
+          </span>
+        </div>
+
+        {/* Content */}
+        <div className="space-y-2 pl-[52px]">
+          <h3 className="text-base font-semibold text-white transition-colors group-hover:text-[rgb(var(--color-electric-cyan))]">
+            {label}
+          </h3>
+          <p className="text-sm leading-relaxed text-[rgb(var(--color-silver))]/80">
+            {desc}
+          </p>
+        </div>
+
+        {/* Bottom decorative line */}
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-[rgba(var(--color-electric-cyan),0.2)] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
       </div>
     </Wrapper>
   );
