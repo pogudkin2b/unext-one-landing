@@ -153,6 +153,7 @@ export default function Home() {
       <div className="relative z-10 mx-auto max-w-6xl px-6 pb-20 pt-16 space-y-32">
         {/* Hero */}
         <FadeInSection id="hero">
+          {/* Badge - centered */}
           <div className="flex justify-center">
             <motion.div
               variants={scaleIn}
@@ -166,88 +167,107 @@ export default function Home() {
             </motion.div>
           </div>
 
-          <div className="mt-12 grid gap-12 lg:grid-cols-[1.5fr,1fr] lg:items-start">
-            <motion.div variants={fadeInUp} className="space-y-8 text-center lg:text-left">
-              <h1 className="text-5xl font-bold leading-tight tracking-tight text-white sm:text-6xl lg:text-7xl">
-                Юридическая поддержка роста:{" "}
-                <span className="text-gradient-cyan">от SAFE до M&A</span> —
-                быстро, понятно и без воды
-              </h1>
-              <p className="mx-auto max-w-2xl text-lg leading-relaxed text-[rgb(var(--color-silver))] lg:mx-0">
-                Помогаем стартапам, инвесторам, корпорациям и Web3-командам закрывать
-                юридические задачи на любой стадии: от первых договорённостей до крупных сделок.
-              </p>
-              <div className="flex flex-wrap items-center justify-center gap-4 lg:justify-start">
-                <motion.a
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  href={sections.contact}
-                  className="group relative overflow-hidden rounded-full bg-gradient-to-r from-[rgb(var(--color-electric-cyan))] to-[rgb(var(--color-amber))] px-8 py-4 text-base font-bold text-[rgb(var(--color-midnight))] shadow-lg shadow-[rgba(var(--color-electric-cyan),0.3)] transition-all hover:shadow-xl hover:shadow-[rgba(var(--color-electric-cyan),0.5)]"
-                >
-                  Получить бесплатную консультацию
-                </motion.a>
-                <a
-                  href={sections.trust}
-                  className="group flex items-center gap-2 text-base text-[rgb(var(--color-silver))] transition-colors hover:text-[rgb(var(--color-electric-cyan))]"
-                >
-                  <span>Смотреть кейсы</span>
-                  <motion.span
-                    animate={{ y: [0, 5, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                  >
-                    ↓
-                  </motion.span>
-                </a>
-              </div>
-              <p className="flex items-center justify-center gap-2 text-sm text-[rgb(var(--color-silver))]/60 lg:justify-start">
-                <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
-                Понимаем задачи бизнеса. Делаем быстро. Работаем без лишней бюрократии.
-              </p>
-            </motion.div>
+          {/* Main content - centered */}
+          <motion.div variants={fadeInUp} className="mt-12 space-y-8 text-center">
+            {/* Heading */}
+            <h1 className="mx-auto max-w-5xl text-5xl font-bold leading-tight tracking-tight text-white sm:text-6xl lg:text-7xl">
+              Юридическая поддержка роста:{" "}
+              <span className="text-gradient-cyan">от SAFE до M&A</span> —
+              быстро, понятно и без воды
+            </h1>
 
-            <motion.div
-              variants={scaleIn}
-              className="relative rounded-3xl border border-[rgba(var(--color-electric-cyan),0.2)] bg-gradient-to-br from-[rgba(var(--color-deep-navy),0.8)] to-[rgba(var(--color-midnight),0.8)] p-8 shadow-2xl backdrop-blur-xl border-glow"
-            >
-              <div className="absolute -left-10 -top-10 h-40 w-40 rounded-full bg-[rgb(var(--color-electric-cyan))] opacity-10 blur-3xl" />
-              <div className="absolute -bottom-10 -right-10 h-40 w-40 rounded-full bg-[rgb(var(--color-amber))] opacity-10 blur-3xl" />
+            {/* Subheading */}
+            <p className="mx-auto max-w-3xl text-lg leading-relaxed text-[rgb(var(--color-silver))]">
+              Помогаем стартапам, инвесторам, корпорациям и Web3-командам закрывать
+              юридические задачи на любой стадии: от первых договорённостей до крупных сделок.
+            </p>
 
-              <div className="relative">
-                <h2 className="mb-4 text-lg font-semibold text-white">
-                  Коротко о вас — и мы вернёмся с планом действий
-                </h2>
-                <form
-                  className="space-y-4"
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    alert("Форма пока работает как демо. Подключите отправку позже.");
-                  }}
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href={sections.contact}
+                className="group relative overflow-hidden rounded-full bg-gradient-to-r from-[rgb(var(--color-electric-cyan))] to-[rgb(var(--color-amber))] px-8 py-4 text-base font-bold text-[rgb(var(--color-midnight))] shadow-lg shadow-[rgba(var(--color-electric-cyan),0.3)] transition-all hover:shadow-xl hover:shadow-[rgba(var(--color-electric-cyan),0.5)]"
+              >
+                Получить бесплатную консультацию
+              </motion.a>
+              <a
+                href={sections.trust}
+                className="group flex items-center gap-2 text-base text-[rgb(var(--color-silver))] transition-colors hover:text-[rgb(var(--color-electric-cyan))]"
+              >
+                <span>Смотреть кейсы</span>
+                <motion.span
+                  animate={{ y: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
                 >
+                  ↓
+                </motion.span>
+              </a>
+            </div>
+
+            {/* Trust badge */}
+            <p className="flex items-center justify-center gap-2 text-sm text-[rgb(var(--color-silver))]/60">
+              <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+              Понимаем задачи бизнеса. Делаем быстро. Работаем без лишней бюрократии.
+            </p>
+          </motion.div>
+
+          {/* Contact Form - Wide and Compact, Centered Below */}
+          <motion.div
+            variants={scaleIn}
+            className="relative mx-auto mt-16 max-w-4xl rounded-2xl border border-[rgba(var(--color-electric-cyan),0.2)] bg-gradient-to-br from-[rgba(var(--color-deep-navy),0.8)] to-[rgba(var(--color-midnight),0.8)] p-6 shadow-2xl backdrop-blur-xl border-glow sm:p-8"
+          >
+            {/* Decorative blurs */}
+            <div className="absolute -left-10 -top-10 h-40 w-40 rounded-full bg-[rgb(var(--color-electric-cyan))] opacity-10 blur-3xl" />
+            <div className="absolute -bottom-10 -right-10 h-40 w-40 rounded-full bg-[rgb(var(--color-amber))] opacity-10 blur-3xl" />
+
+            <div className="relative">
+              {/* Form heading */}
+              <h2 className="mb-6 text-center text-lg font-semibold text-white">
+                Коротко о вас — и мы вернёмся с планом действий
+              </h2>
+
+              <form
+                className="space-y-4"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  alert("Форма пока работает как демо. Подключите отправку позже.");
+                }}
+              >
+                {/* Two-column layout for name and contact on desktop */}
+                <div className="grid gap-4 sm:grid-cols-2">
                   <FormField label="Имя*" required placeholder="Как к вам обращаться?" />
                   <FormField label="Email или Telegram*" required placeholder="@username или email" />
-                  <FormField
-                    label="Кратко: задача (опционально)"
-                    as="textarea"
-                    rows={3}
-                    placeholder="Сделка, инвестиции, структура, DAO..."
-                  />
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    type="submit"
-                    className="w-full rounded-full bg-gradient-to-r from-[rgb(var(--color-electric-cyan))] to-[rgb(var(--color-amber))] px-6 py-3 text-sm font-bold text-[rgb(var(--color-midnight))] shadow-lg transition-all hover:shadow-xl"
-                  >
-                    Получить план действий
-                  </motion.button>
-                  <p className="text-[10px] leading-relaxed text-[rgb(var(--color-silver))]/50">
-                    Отправляя форму, вы соглашаетесь на обработку данных. Никакого спама — только ответ по вашему запросу.
-                  </p>
-                </form>
-              </div>
-            </motion.div>
-          </div>
+                </div>
+
+                {/* Task field - full width, reduced rows for compactness */}
+                <FormField
+                  label="Кратко: задача (опционально)"
+                  as="textarea"
+                  rows={2}
+                  placeholder="Сделка, инвестиции, структура, DAO..."
+                />
+
+                {/* Submit button */}
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  type="submit"
+                  className="w-full rounded-full bg-gradient-to-r from-[rgb(var(--color-electric-cyan))] to-[rgb(var(--color-amber))] px-6 py-3 text-sm font-bold text-[rgb(var(--color-midnight))] shadow-lg transition-all hover:shadow-xl"
+                >
+                  Получить план действий
+                </motion.button>
+
+                {/* Privacy notice */}
+                <p className="text-center text-[10px] leading-relaxed text-[rgb(var(--color-silver))]/50">
+                  Отправляя форму, вы соглашаетесь на обработку данных. Никакого спама — только ответ по вашему запросу.
+                </p>
+              </form>
+            </div>
+          </motion.div>
         </FadeInSection>
 
         {/* Audience */}
