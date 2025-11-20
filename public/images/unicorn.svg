@@ -1,0 +1,38 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Unicorn body -->
+  <path d="M140 120 L130 140 L120 145 L110 145 L100 143 L95 135 L90 125 L85 115 L82 105 L80 95 L80 85 L82 75 L85 70 L90 65 L95 62 L100 60 L105 60 L110 62 L115 65 L120 70 Z" fill="#50D16B" opacity="0.8"/>
+
+  <!-- Unicorn legs -->
+  <path d="M95 135 L95 165 L92 170 L90 170 L88 165 L88 135" fill="#3AAF5A" opacity="0.9"/>
+  <path d="M105 138 L105 168 L102 173 L100 173 L98 168 L98 138" fill="#3AAF5A" opacity="0.9"/>
+  <path d="M115 140 L115 170 L112 175 L110 175 L108 170 L108 140" fill="#3AAF5A" opacity="0.9"/>
+  <path d="M125 138 L125 168 L122 173 L120 173 L118 168 L118 138" fill="#3AAF5A" opacity="0.9"/>
+
+  <!-- Unicorn neck and head -->
+  <path d="M120 70 L125 60 L130 50 L135 45 L140 42 L145 40 L150 40 L155 42 L158 45 L160 50 L160 55 L158 60 L155 62 L150 63 L145 62" fill="#58E877" opacity="0.85"/>
+
+  <!-- Unicorn horn -->
+  <path d="M150 40 L148 30 L147 20 L147 10 L148 5 L150 3 L152 5 L153 10 L153 20 L152 30 L150 40" fill="#E7E391" opacity="0.95"/>
+
+  <!-- Unicorn ear -->
+  <path d="M155 42 L158 35 L160 32 L162 32 L163 35 L162 40 L160 42" fill="#3AAF5A" opacity="0.8"/>
+
+  <!-- Unicorn mane -->
+  <path d="M145 62 L140 65 L135 68 L130 72 L125 75 L120 70 L125 68 L130 65 L135 62 L140 60 L145 58 Z" fill="#3AAF5A" opacity="0.7"/>
+
+  <!-- Unicorn tail -->
+  <path d="M80 95 L75 100 L70 105 L65 108 L60 110 L58 108 L60 105 L65 100 L70 95 L75 92 L80 90 Z" fill="#3AAF5A" opacity="0.7"/>
+
+  <!-- Geometric facets overlay -->
+  <path d="M100 60 L110 62 L115 70 L112 80 L105 82 L98 78 L95 70 L98 62 Z" fill="#58E877" opacity="0.3"/>
+  <path d="M115 70 L120 72 L125 80 L122 90 L115 92 L110 88 L108 80 L112 72 Z" fill="#50D16B" opacity="0.3"/>
+  <path d="M90 90 L98 92 L102 100 L100 110 L92 112 L85 108 L82 100 L85 92 Z" fill="#3AAF5A" opacity="0.3"/>
+  <path d="M105 100 L115 102 L120 110 L118 120 L110 122 L102 118 L100 110 L103 102 Z" fill="#58E877" opacity="0.3"/>
+
+  <!-- Additional geometric details -->
+  <path d="M140 45 L145 48 L148 53 L145 58 L140 56 L137 51 Z" fill="#50D16B" opacity="0.4"/>
+  <path d="M150 40 L152 35 L155 32 L158 35 L156 40 Z" fill="#E7E391" opacity="0.5"/>
+
+  <!-- Eye -->
+  <circle cx="153" cy="48" r="2" fill="#0A140F" opacity="0.8"/>
+</svg>

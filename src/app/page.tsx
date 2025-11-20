@@ -1,6 +1,7 @@
 'use client';
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
@@ -169,17 +170,35 @@ export default function Home() {
 
           {/* Main content - centered */}
           <motion.div variants={fadeInUp} className="mt-12 space-y-8 text-center">
-            {/* Heading */}
-            <h1 className="mx-auto max-w-5xl text-5xl font-bold leading-tight tracking-tight text-white sm:text-6xl lg:text-7xl">
-              Юридическая поддержка роста:{" "}
-              <span className="text-gradient-cyan">от SAFE до M&A</span> —
-              быстро, понятно и без воды
+            {/* Unicorn illustration */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex justify-center mb-8"
+            >
+              <div className="relative w-32 h-32 sm:w-40 sm:h-40">
+                <Image
+                  src="/images/unicorn.svg"
+                  alt="Unicorn"
+                  width={160}
+                  height={160}
+                  className="w-full h-full"
+                  priority
+                />
+              </div>
+            </motion.div>
+
+            {/* Heading - optimized for 2 lines */}
+            <h1 className="mx-auto max-w-5xl text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
+              Юридическая поддержка роста: от SAFE до{" "}
+              <span className="text-gradient-cyan">M&A</span> — быстро, понятно и без воды
             </h1>
 
-            {/* Subheading */}
-            <p className="mx-auto max-w-3xl text-lg leading-relaxed text-[rgb(var(--color-silver))]">
-              Помогаем стартапам, инвесторам, корпорациям и Web3-командам закрывать
-              юридические задачи на любой стадии: от первых договорённостей до крупных сделок.
+            {/* Subheading - optimized for 2 lines */}
+            <p className="mx-auto max-w-4xl text-base leading-relaxed text-[rgb(var(--color-silver))] sm:text-lg">
+              Помогаем стартапам, инвесторам, корпорациям и Web3-командам закрывать юридические задачи на любой{" "}
+              стадии: от первых договорённостей до крупных сделок.
             </p>
 
             {/* CTA Buttons */}
