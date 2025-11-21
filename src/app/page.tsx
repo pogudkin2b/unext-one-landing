@@ -962,6 +962,33 @@ function InvestorInsights() {
               alt="Investor Insights"
               className="w-full h-full object-contain"
             />
+
+            {/* Animated arrow above magnifying glass */}
+            <motion.div
+              className="absolute top-[20%] left-[calc(60%-35px)] -translate-x-1/2 z-10"
+              animate={{ y: [0, -8, 0] }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M12 4L12 20M12 4L6 10M12 4L18 10"
+                  stroke="url(#arrowGradientMobile)"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <defs>
+                  <linearGradient id="arrowGradientMobile" x1="6" y1="4" x2="18" y2="20" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stopColor="rgb(80, 209, 107)" />
+                    <stop offset="100%" stopColor="rgb(231, 227, 145)" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </motion.div>
           </div>
         </motion.div>
 
@@ -1017,6 +1044,33 @@ function InvestorInsights() {
                 alt="Investor Insights"
                 className="w-full h-full object-contain"
               />
+
+              {/* Animated arrow above magnifying glass */}
+              <motion.div
+                className="absolute top-[20%] left-[calc(60%-35px)] -translate-x-1/2 z-10"
+                animate={{ y: [0, -8, 0] }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M12 4L12 20M12 4L6 10M12 4L18 10"
+                    stroke="url(#arrowGradient)"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <defs>
+                    <linearGradient id="arrowGradient" x1="6" y1="4" x2="18" y2="20" gradientUnits="userSpaceOnUse">
+                      <stop offset="0%" stopColor="rgb(80, 209, 107)" />
+                      <stop offset="100%" stopColor="rgb(231, 227, 145)" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </motion.div>
             </motion.div>
           </div>
 
