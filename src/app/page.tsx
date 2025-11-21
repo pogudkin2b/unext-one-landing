@@ -5,14 +5,13 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
-import { Rocket, TrendingUp, Building2, BarChart3, Network, type LucideIcon } from "lucide-react";
+import { Rocket, TrendingUp, Building2, BarChart3, type LucideIcon } from "lucide-react";
 
 const sections = {
   audience: "#audience",
   startups: "#startups",
   investors: "#investors",
   corporates: "#corporates",
-  web3: "#web3",
   trust: "#trust",
   contact: "#contact",
 };
@@ -164,7 +163,7 @@ export default function Home() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[rgb(var(--color-amber))] opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-[rgb(var(--color-amber))]" />
               </span>
-              Юридический партнёр для роста бизнеса — от стартапа до сделки, от фаундера до инвестора, от корпоративной структуры до DAO.
+              Юридический партнёр для роста бизнеса — от стартапа до сделки, от фаундера до инвестора.
             </motion.div>
           </div>
 
@@ -197,7 +196,7 @@ export default function Home() {
 
             {/* Subheading - optimized for 2 lines */}
             <p className="mx-auto max-w-4xl text-base leading-relaxed text-[rgb(var(--color-silver))] sm:text-lg">
-              Помогаем стартапам, инвесторам, корпорациям и Web3-командам закрывать юридические задачи на любой{" "}
+              Помогаем стартапам, инвесторам и корпорациям закрывать юридические задачи на любой{" "}
               стадии: от первых договорённостей до крупных сделок.
             </p>
 
@@ -324,18 +323,17 @@ export default function Home() {
                 <span className="text-gradient-cyan">быстрее юристов</span>
               </h2>
               <p className="mx-auto max-w-3xl text-base text-[rgb(var(--color-silver))]">
-                Мы встраиваемся в реальный темп роста: стартапы, фонды, корпорации и Web3-команды,
+                Мы встраиваемся в реальный темп роста: стартапы, фонды и корпорации,
                 которым нужны решения, а не лекции по теории права.
               </p>
             </div>
 
-            <div className="relative mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="relative mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-2">
             {[
               { icon: Rocket, label: "Стартапам", desc: "Оформляем сделки, структуру и IP", href: sections.startups, badge: "Startup" },
               { icon: TrendingUp, label: "Инвесторам", desc: "Проверяем стартапы и защищаем сделки", href: sections.investors, badge: "Investor" },
               { icon: Building2, label: "Корпорациям", desc: "Строим юридическую систему под рост и M&A", href: sections.corporates, badge: "Corporate" },
               { icon: BarChart3, label: "COO и CFO", desc: "Снимаем рутину с юр-документов", badge: "Executive" },
-              { icon: Network, label: "Web3-командам", desc: "DAO, токены, AML — безопасно и понятно", href: sections.web3, badge: "Web3" },
             ].map((item, i) => (
               <motion.div
                 key={item.label}
@@ -415,25 +413,6 @@ export default function Home() {
             ]}
           />
           <DownloadLink text='Гайд "Юридическая карта роста компании"' />
-        </FadeInSection>
-
-        {/* Web3 */}
-        <FadeInSection id="web3">
-          <SectionTitle
-            tag="ДЛЯ WEB3"
-            title="Легализация DAO и токенов — без серых зон"
-            subtitle="Web3-проекты живут в другой логике. Мы соединяем её с требованиями регуляторов и юрисдикций."
-          />
-          <BulletGrid
-            items={[
-              "Проектируем легальную структуру DAO",
-              "Консультируем по токеномике: utility / security",
-              "Настраиваем AML/KYC-комплаенс",
-              "Готовим соглашения валидаторов и стейкхолдеров",
-              "Адаптируем проекты под выбранные юрисдикции",
-            ]}
-          />
-          <DownloadLink text='Получить "Legal Survival Kit для Web3-проекта"' />
         </FadeInSection>
 
         {/* Trust / Cases */}
@@ -539,7 +518,7 @@ export default function Home() {
                     label="Кратко опишите задачу (опционально)"
                     as="textarea"
                     rows={4}
-                    placeholder="Раунд, сделка, структура, Web3-проект..."
+                    placeholder="Раунд, сделка, структура..."
                   />
                   <div className="space-y-1">
                     <label className="text-xs font-medium text-[rgb(var(--color-silver))]">
@@ -592,7 +571,7 @@ export default function Home() {
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="space-y-2">
               <p>© {new Date().getFullYear()} UNEXT.ONE — юридический партнёр для роста бизнеса.</p>
-              <p>От стартапа до сделки, от фаундера до инвестора, от корпструктуры до DAO.</p>
+              <p>От стартапа до сделки, от фаундера до инвестора.</p>
             </div>
             <div className="space-y-1 text-right">
               <p className="font-medium text-[rgb(var(--color-silver))]">Контакты:</p>
