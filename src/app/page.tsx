@@ -1040,16 +1040,17 @@ function InvestorInsights() {
                   const isHovered = hoveredIndex === i;
                   // Calculate Y position for each item (evenly spaced vertically)
                   const itemY = 250 + (i - 1) * 120; // Center item at 250, space 120px apart
-                  const centerY = 250; // Center of image
-                  const startX = 320; // Start closer to image edge
+                  const centerX = 500; // Center of SVG canvas
+                  const centerY = 280; // Start below center image
                   const endX = 85; // End at left text column (near circle)
-                  const midX = 200; // Elbow point X
+                  const midX = 250; // Elbow point X (closer to center)
+                  const midY = 280 + (i - 1) * 40; // Elbow point Y
 
                   return (
                     <g key={`left-${i}`}>
                       {/* Line path with elbow */}
                       <motion.path
-                        d={`M ${startX} ${centerY} L ${midX} ${centerY} L ${midX - 20} ${itemY} L ${endX} ${itemY}`}
+                        d={`M ${centerX} ${centerY} L ${midX} ${midY} L ${endX} ${itemY}`}
                         stroke="rgba(80, 209, 107, 0.3)"
                         strokeWidth={isHovered ? "1.5" : "1"}
                         fill="none"
@@ -1079,16 +1080,17 @@ function InvestorInsights() {
                 {rightItems.map((_, i) => {
                   const isHovered = hoveredIndex === (i + 3);
                   const itemY = 250 + (i - 1) * 120;
-                  const centerY = 250;
-                  const startX = 680; // Start closer to image edge
+                  const centerX = 500; // Center of SVG canvas
+                  const centerY = 280; // Start below center image
                   const endX = 915; // End at right text column (near circle)
-                  const midX = 800; // Elbow point X
+                  const midX = 750; // Elbow point X (closer to center)
+                  const midY = 280 + (i - 1) * 40; // Elbow point Y
 
                   return (
                     <g key={`right-${i}`}>
                       {/* Line path with elbow */}
                       <motion.path
-                        d={`M ${startX} ${centerY} L ${midX} ${centerY} L ${midX + 20} ${itemY} L ${endX} ${itemY}`}
+                        d={`M ${centerX} ${centerY} L ${midX} ${midY} L ${endX} ${itemY}`}
                         stroke="rgba(80, 209, 107, 0.3)"
                         strokeWidth={isHovered ? "1.5" : "1"}
                         fill="none"
