@@ -965,7 +965,7 @@ function InvestorInsights() {
 
             {/* Animated arrow above magnifying glass */}
             <motion.div
-              className="absolute top-[20%] left-[calc(60%-35px)] -translate-x-1/2 z-10"
+              className="absolute top-[20%] left-[calc(60%-37px)] -translate-x-1/2 z-10"
               animate={{ y: [0, -8, 0] }}
               transition={{
                 duration: 2,
@@ -1047,7 +1047,7 @@ function InvestorInsights() {
 
               {/* Animated arrow above magnifying glass */}
               <motion.div
-                className="absolute top-[20%] left-[calc(60%-35px)] -translate-x-1/2 z-10"
+                className="absolute top-[20%] left-[calc(60%-37px)] -translate-x-1/2 z-10"
                 animate={{ y: [0, -8, 0] }}
                 transition={{
                   duration: 2,
