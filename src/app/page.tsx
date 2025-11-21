@@ -986,7 +986,7 @@ function InvestorInsights() {
       {/* Desktop layout */}
       <div className="hidden lg:block">
         <div className="relative flex items-center justify-center gap-28">
-          {/* Left items - aligned in column */}
+          {/* Left items - aligned in column with left text alignment */}
           <div className="flex flex-col justify-center space-y-12" style={{ width: '320px' }}>
             {leftItems.map((item, i) => (
               <motion.div
@@ -997,13 +997,13 @@ function InvestorInsights() {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 onMouseEnter={() => setHoveredIndex(i)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                className="group relative flex items-center gap-3 text-sm text-[rgb(var(--color-silver))] transition-colors hover:text-white"
+                className="group relative flex items-start gap-3 text-sm text-[rgb(var(--color-silver))] transition-colors hover:text-white"
               >
-                <span className="flex-1 text-right leading-relaxed">{item}</span>
-                <div className="relative h-2 w-2 flex-shrink-0">
+                <div className="relative h-2 w-2 flex-shrink-0 mt-1">
                   <div className="absolute inset-0 rounded-full bg-[rgb(var(--color-electric-cyan))] opacity-20" />
                   <div className="absolute inset-0.5 rounded-full bg-[rgb(var(--color-electric-cyan))]" />
                 </div>
+                <span className="flex-1 text-left leading-relaxed">{item}</span>
               </motion.div>
             ))}
           </div>
@@ -1041,13 +1041,15 @@ function InvestorInsights() {
                   // Calculate Y position for each item (evenly spaced vertically)
                   const itemY = 250 + (i - 1) * 120; // Center item at 250, space 120px apart
                   const centerY = 250; // Center of image
-                  const midX = 150; // Elbow point X (closer to text)
+                  const startX = 320; // Start closer to image edge
+                  const endX = 85; // End at left text column (near circle)
+                  const midX = 200; // Elbow point X
 
                   return (
                     <g key={`left-${i}`}>
                       {/* Line path with elbow */}
                       <motion.path
-                        d={`M 50 ${itemY} L ${midX} ${itemY} L ${midX + 30} ${centerY} L 360 ${centerY}`}
+                        d={`M ${startX} ${centerY} L ${midX} ${centerY} L ${midX - 20} ${itemY} L ${endX} ${itemY}`}
                         stroke="rgba(80, 209, 107, 0.3)"
                         strokeWidth={isHovered ? "1.5" : "1"}
                         fill="none"
@@ -1058,7 +1060,7 @@ function InvestorInsights() {
                       />
                       {/* Circle at the end (near text) */}
                       <motion.circle
-                        cx="50"
+                        cx={endX}
                         cy={itemY}
                         r={isHovered ? "4" : "3"}
                         fill="rgba(80, 209, 107, 0.4)"
@@ -1078,13 +1080,15 @@ function InvestorInsights() {
                   const isHovered = hoveredIndex === (i + 3);
                   const itemY = 250 + (i - 1) * 120;
                   const centerY = 250;
-                  const midX = 850; // Elbow point X (closer to text)
+                  const startX = 680; // Start closer to image edge
+                  const endX = 915; // End at right text column (near circle)
+                  const midX = 800; // Elbow point X
 
                   return (
                     <g key={`right-${i}`}>
                       {/* Line path with elbow */}
                       <motion.path
-                        d={`M 640 ${centerY} L ${midX - 30} ${centerY} L ${midX} ${itemY} L 950 ${itemY}`}
+                        d={`M ${startX} ${centerY} L ${midX} ${centerY} L ${midX + 20} ${itemY} L ${endX} ${itemY}`}
                         stroke="rgba(80, 209, 107, 0.3)"
                         strokeWidth={isHovered ? "1.5" : "1"}
                         fill="none"
@@ -1095,7 +1099,7 @@ function InvestorInsights() {
                       />
                       {/* Circle at the end (near text) */}
                       <motion.circle
-                        cx="950"
+                        cx={endX}
                         cy={itemY}
                         r={isHovered ? "4" : "3"}
                         fill="rgba(80, 209, 107, 0.4)"
@@ -1124,13 +1128,13 @@ function InvestorInsights() {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 onMouseEnter={() => setHoveredIndex(i + 3)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                className="group relative flex items-center gap-3 text-sm text-[rgb(var(--color-silver))] transition-colors hover:text-white"
+                className="group relative flex items-start gap-3 text-sm text-[rgb(var(--color-silver))] transition-colors hover:text-white"
               >
-                <div className="relative h-2 w-2 flex-shrink-0">
+                <div className="relative h-2 w-2 flex-shrink-0 mt-1">
                   <div className="absolute inset-0 rounded-full bg-[rgb(var(--color-electric-cyan))] opacity-20" />
                   <div className="absolute inset-0.5 rounded-full bg-[rgb(var(--color-electric-cyan))]" />
                 </div>
-                <span className="flex-1 leading-relaxed">{item}</span>
+                <span className="flex-1 text-left leading-relaxed">{item}</span>
               </motion.div>
             ))}
           </div>
