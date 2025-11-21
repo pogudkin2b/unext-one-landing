@@ -404,16 +404,7 @@ export default function Home() {
             title="Мы покажем, где спрятаны риски стартапа до сделки"
             subtitle="Юридическая прозрачность объекта инвестиций — до того, как деньги ушли со счёта."
           />
-          <BulletGrid
-            items={[
-              "Анализируем юридические и корпоративные риски",
-              "Проводим полное Due Diligence объекта инвестирования",
-              "Готовим и проверяем инвестиционную документацию",
-              "Сопровождаем инвестиционные сделки",
-              "Помогаем структурировать портфель",
-              "Разрешаем споры с основателями и соинвесторами",
-            ]}
-          />
+          <InvestorInsights />
           <DownloadLink text='PDF "ТОП-7 юридических ошибок стартапов глазами инвестора"' />
         </FadeInSection>
 
@@ -934,6 +925,179 @@ function CTABlock({ text, buttonText }: CTABlockProps) {
           {buttonText}
         </span>
       </motion.a>
+    </div>
+  );
+}
+
+function InvestorInsights() {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  const leftItems = [
+    "Анализируем юридические и корпоративные риски",
+    "Проводим полное Due Diligence объекта инвестирования",
+    "Готовим и проверяем инвестиционную документацию",
+  ];
+
+  const rightItems = [
+    "Сопровождаем инвестиционные сделки",
+    "Помогаем структурировать портфель",
+    "Разрешаем споры с основателями и соинвесторами",
+  ];
+
+  return (
+    <div className="mt-10">
+      {/* Mobile layout */}
+      <div className="lg:hidden">
+        {/* Image */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-8 flex justify-center"
+        >
+          <div className="relative w-64 h-64">
+            <Image
+              src="/images/investor-insights-illustration.svg"
+              alt="Investor Insights"
+              width={256}
+              height={256}
+              className="w-full h-full"
+            />
+          </div>
+        </motion.div>
+
+        {/* All items in one column */}
+        <div className="space-y-3">
+          {[...leftItems, ...rightItems].map((item, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.05 }}
+              className="flex items-start gap-3 text-sm text-[rgb(var(--color-silver))]"
+            >
+              <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-r from-[rgb(var(--color-electric-cyan))] to-[rgb(var(--color-amber))]" />
+              <span>{item}</span>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* Desktop layout */}
+      <div className="hidden lg:block">
+        <div className="relative flex items-center justify-between gap-8">
+          {/* Left items */}
+          <div className="flex-1 space-y-6">
+            {leftItems.map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                onMouseEnter={() => setHoveredIndex(i)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                className="group relative flex items-start gap-3 text-sm text-[rgb(var(--color-silver))] transition-colors hover:text-white"
+              >
+                <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-r from-[rgb(var(--color-electric-cyan))] to-[rgb(var(--color-amber))]" />
+                <span className="flex-1 text-right">{item}</span>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Center image with connecting lines */}
+          <div className="relative flex-shrink-0">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative w-80 h-80"
+            >
+              <Image
+                src="/images/investor-insights-illustration.svg"
+                alt="Investor Insights"
+                width={320}
+                height={320}
+                className="w-full h-full"
+              />
+
+              {/* Connecting lines - Left side */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ overflow: 'visible' }}>
+                {leftItems.map((_, i) => {
+                  const yPos = 40 + (i * 33.33); // Distribute evenly across height
+                  const isHovered = hoveredIndex === i;
+                  return (
+                    <motion.line
+                      key={`left-${i}`}
+                      x1="-40"
+                      y1={`${yPos}%`}
+                      x2="30%"
+                      y2="50%"
+                      stroke="rgba(80, 209, 107, 0.3)"
+                      strokeWidth={isHovered ? "2" : "1"}
+                      initial={{ pathLength: 0, opacity: 0 }}
+                      whileInView={{ pathLength: 1, opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: 0.4 + i * 0.1 }}
+                      style={{
+                        strokeDasharray: '4 4',
+                        filter: isHovered ? 'drop-shadow(0 0 4px rgba(80, 209, 107, 0.5))' : 'none',
+                      }}
+                    />
+                  );
+                })}
+
+                {/* Connecting lines - Right side */}
+                {rightItems.map((_, i) => {
+                  const yPos = 40 + (i * 33.33);
+                  const isHovered = hoveredIndex === (i + 3);
+                  return (
+                    <motion.line
+                      key={`right-${i}`}
+                      x1="70%"
+                      y1="50%"
+                      x2="140"
+                      y2={`${yPos}%`}
+                      stroke="rgba(80, 209, 107, 0.3)"
+                      strokeWidth={isHovered ? "2" : "1"}
+                      initial={{ pathLength: 0, opacity: 0 }}
+                      whileInView={{ pathLength: 1, opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: 0.4 + i * 0.1 }}
+                      style={{
+                        strokeDasharray: '4 4',
+                        filter: isHovered ? 'drop-shadow(0 0 4px rgba(80, 209, 107, 0.5))' : 'none',
+                      }}
+                    />
+                  );
+                })}
+              </svg>
+            </motion.div>
+          </div>
+
+          {/* Right items */}
+          <div className="flex-1 space-y-6">
+            {rightItems.map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                onMouseEnter={() => setHoveredIndex(i + 3)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                className="group relative flex items-start gap-3 text-sm text-[rgb(var(--color-silver))] transition-colors hover:text-white"
+              >
+                <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-r from-[rgb(var(--color-electric-cyan))] to-[rgb(var(--color-amber))]" />
+                <span className="flex-1">{item}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
