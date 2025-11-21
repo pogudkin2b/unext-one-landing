@@ -958,7 +958,7 @@ function InvestorInsights() {
         >
           <div className="relative w-64 h-64">
             <img
-              src="/images/investor-insights-illustration.svg"
+              src="/images/investor-insights-illustration.webp"
               alt="Investor Insights"
               className="w-full h-full object-contain"
             />
@@ -1015,7 +1015,7 @@ function InvestorInsights() {
               className="relative w-80 h-80"
             >
               <img
-                src="/images/investor-insights-illustration.svg"
+                src="/images/investor-insights-illustration.webp"
                 alt="Investor Insights"
                 className="w-full h-full object-contain"
               />
