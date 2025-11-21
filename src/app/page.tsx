@@ -957,12 +957,10 @@ function InvestorInsights() {
           className="mb-8 flex justify-center"
         >
           <div className="relative w-64 h-64">
-            <Image
+            <img
               src="/images/investor-insights-illustration.svg"
               alt="Investor Insights"
-              width={256}
-              height={256}
-              className="w-full h-full"
+              className="w-full h-full object-contain"
             />
           </div>
         </motion.div>
@@ -1016,12 +1014,10 @@ function InvestorInsights() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative w-80 h-80"
             >
-              <Image
+              <img
                 src="/images/investor-insights-illustration.svg"
                 alt="Investor Insights"
-                width={320}
-                height={320}
-                className="w-full h-full"
+                className="w-full h-full object-contain"
               />
 
               {/* Connecting lines - Left side */}
