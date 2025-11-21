@@ -985,9 +985,9 @@ function InvestorInsights() {
 
       {/* Desktop layout */}
       <div className="hidden lg:block">
-        <div className="relative flex items-center justify-center gap-28">
-          {/* Left items - aligned in column with left text alignment */}
-          <div className="flex flex-col justify-center space-y-12" style={{ width: '320px' }}>
+        <div className="relative flex items-center justify-center gap-20">
+          {/* Left items - aligned in column */}
+          <div className="flex flex-col justify-center space-y-8" style={{ width: '300px' }}>
             {leftItems.map((item, i) => (
               <motion.div
                 key={i}
@@ -995,132 +995,33 @@ function InvestorInsights() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                onMouseEnter={() => setHoveredIndex(i)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                className="group relative flex items-start gap-3 text-sm text-[rgb(var(--color-silver))] transition-colors hover:text-white"
+                className="flex items-start gap-3 text-sm text-[rgb(var(--color-silver))]"
               >
-                <div className="relative h-2 w-2 flex-shrink-0 mt-1">
-                  <div className="absolute inset-0 rounded-full bg-[rgb(var(--color-electric-cyan))] opacity-20" />
-                  <div className="absolute inset-0.5 rounded-full bg-[rgb(var(--color-electric-cyan))]" />
-                </div>
-                <span className="flex-1 text-left leading-relaxed">{item}</span>
+                <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-r from-[rgb(var(--color-electric-cyan))] to-[rgb(var(--color-amber))]" />
+                <span className="leading-relaxed">{item}</span>
               </motion.div>
             ))}
           </div>
 
-          {/* Center image with connecting lines */}
+          {/* Center image */}
           <div className="relative flex-shrink-0">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative w-72 h-72"
+              className="relative w-64 h-64"
             >
               <img
                 src="/images/investor-insights-illustration.webp"
                 alt="Investor Insights"
                 className="w-full h-full object-contain"
               />
-
-              {/* Connecting lines SVG overlay */}
-              <svg
-                className="absolute pointer-events-none"
-                style={{
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  width: '1000px',
-                  height: '500px',
-                  overflow: 'visible'
-                }}
-              >
-                {/* Left lines */}
-                {leftItems.map((_, i) => {
-                  const isHovered = hoveredIndex === i;
-                  // Calculate Y position for each item (evenly spaced vertically)
-                  const itemY = 250 + (i - 1) * 120; // Center item at 250, space 120px apart
-                  const centerX = 500; // Center of SVG canvas
-                  const centerY = 280; // Start below center image
-                  const endX = 85; // End at left text column (near circle)
-                  const midX = 250; // Elbow point X (closer to center)
-                  const midY = 280 + (i - 1) * 40; // Elbow point Y
-
-                  return (
-                    <g key={`left-${i}`}>
-                      {/* Line path with elbow */}
-                      <motion.path
-                        d={`M ${centerX} ${centerY} L ${midX} ${midY} L ${endX} ${itemY}`}
-                        stroke="rgba(80, 209, 107, 0.3)"
-                        strokeWidth={isHovered ? "1.5" : "1"}
-                        fill="none"
-                        initial={{ pathLength: 0, opacity: 0 }}
-                        whileInView={{ pathLength: 1, opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.4 + i * 0.1 }}
-                      />
-                      {/* Circle at the end (near text) */}
-                      <motion.circle
-                        cx={endX}
-                        cy={itemY}
-                        r={isHovered ? "4" : "3"}
-                        fill="rgba(80, 209, 107, 0.4)"
-                        stroke="rgb(80, 209, 107)"
-                        strokeWidth="1"
-                        initial={{ scale: 0, opacity: 0 }}
-                        whileInView={{ scale: 1, opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.4, delay: 0.6 + i * 0.1 }}
-                      />
-                    </g>
-                  );
-                })}
-
-                {/* Right lines */}
-                {rightItems.map((_, i) => {
-                  const isHovered = hoveredIndex === (i + 3);
-                  const itemY = 250 + (i - 1) * 120;
-                  const centerX = 500; // Center of SVG canvas
-                  const centerY = 280; // Start below center image
-                  const endX = 915; // End at right text column (near circle)
-                  const midX = 750; // Elbow point X (closer to center)
-                  const midY = 280 + (i - 1) * 40; // Elbow point Y
-
-                  return (
-                    <g key={`right-${i}`}>
-                      {/* Line path with elbow */}
-                      <motion.path
-                        d={`M ${centerX} ${centerY} L ${midX} ${midY} L ${endX} ${itemY}`}
-                        stroke="rgba(80, 209, 107, 0.3)"
-                        strokeWidth={isHovered ? "1.5" : "1"}
-                        fill="none"
-                        initial={{ pathLength: 0, opacity: 0 }}
-                        whileInView={{ pathLength: 1, opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.4 + i * 0.1 }}
-                      />
-                      {/* Circle at the end (near text) */}
-                      <motion.circle
-                        cx={endX}
-                        cy={itemY}
-                        r={isHovered ? "4" : "3"}
-                        fill="rgba(80, 209, 107, 0.4)"
-                        stroke="rgb(80, 209, 107)"
-                        strokeWidth="1"
-                        initial={{ scale: 0, opacity: 0 }}
-                        whileInView={{ scale: 1, opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.4, delay: 0.6 + i * 0.1 }}
-                      />
-                    </g>
-                  );
-                })}
-              </svg>
             </motion.div>
           </div>
 
           {/* Right items - aligned in column */}
-          <div className="flex flex-col justify-center space-y-12" style={{ width: '320px' }}>
+          <div className="flex flex-col justify-center space-y-8" style={{ width: '300px' }}>
             {rightItems.map((item, i) => (
               <motion.div
                 key={i}
@@ -1128,15 +1029,10 @@ function InvestorInsights() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                onMouseEnter={() => setHoveredIndex(i + 3)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                className="group relative flex items-start gap-3 text-sm text-[rgb(var(--color-silver))] transition-colors hover:text-white"
+                className="flex items-start gap-3 text-sm text-[rgb(var(--color-silver))]"
               >
-                <div className="relative h-2 w-2 flex-shrink-0 mt-1">
-                  <div className="absolute inset-0 rounded-full bg-[rgb(var(--color-electric-cyan))] opacity-20" />
-                  <div className="absolute inset-0.5 rounded-full bg-[rgb(var(--color-electric-cyan))]" />
-                </div>
-                <span className="flex-1 text-left leading-relaxed">{item}</span>
+                <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-r from-[rgb(var(--color-electric-cyan))] to-[rgb(var(--color-amber))]" />
+                <span className="leading-relaxed">{item}</span>
               </motion.div>
             ))}
           </div>
