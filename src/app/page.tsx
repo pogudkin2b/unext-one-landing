@@ -85,7 +85,7 @@ export default function Home() {
   const headerOpacity = useTransform(scrollYProgress, [0, 0.1], [0.8, 1]);
 
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-[rgb(var(--color-midnight))] text-[rgb(var(--color-silver))]">
+    <main className="relative min-h-screen bg-[rgb(var(--color-midnight))] text-[rgb(var(--color-silver))]">
       {/* Background effects */}
       <div className="fixed inset-0 mesh-gradient" />
       <div className="legal-pattern fixed inset-0" />
@@ -94,7 +94,7 @@ export default function Home() {
       {/* Header */}
       <motion.header
         style={{ opacity: headerOpacity }}
-        className="sticky top-0 z-50 border-b border-[rgba(var(--color-electric-cyan),0.15)] bg-[rgb(var(--color-midnight))]/95 backdrop-blur-xl shadow-lg shadow-[rgba(var(--color-electric-cyan),0.1)]"
+        className="fixed top-0 left-0 right-0 z-50 border-b border-[rgba(var(--color-electric-cyan),0.15)] bg-[rgb(var(--color-midnight))]/95 backdrop-blur-xl shadow-lg shadow-[rgba(var(--color-electric-cyan),0.1)]"
       >
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <motion.div
@@ -150,7 +150,7 @@ export default function Home() {
       </motion.header>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-6xl px-6 pb-20 pt-16 space-y-32">
+      <div className="relative z-10 mx-auto max-w-6xl px-6 pb-20 pt-32 space-y-32">
         {/* Hero */}
         <FadeInSection id="hero">
           {/* Badge - centered */}
