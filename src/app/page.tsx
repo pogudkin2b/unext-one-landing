@@ -985,9 +985,9 @@ function InvestorInsights() {
 
       {/* Desktop layout */}
       <div className="hidden lg:block">
-        <div className="relative flex items-center justify-center gap-16">
+        <div className="relative flex items-center justify-center gap-28">
           {/* Left items - aligned in column */}
-          <div className="flex flex-col justify-center space-y-12" style={{ width: '280px' }}>
+          <div className="flex flex-col justify-center space-y-12" style={{ width: '320px' }}>
             {leftItems.map((item, i) => (
               <motion.div
                 key={i}
@@ -1030,7 +1030,7 @@ function InvestorInsights() {
                   top: '50%',
                   left: '50%',
                   transform: 'translate(-50%, -50%)',
-                  width: '800px',
+                  width: '1000px',
                   height: '500px',
                   overflow: 'visible'
                 }}
@@ -1041,13 +1041,13 @@ function InvestorInsights() {
                   // Calculate Y position for each item (evenly spaced vertically)
                   const itemY = 250 + (i - 1) * 120; // Center item at 250, space 120px apart
                   const centerY = 250; // Center of image
-                  const midX = 200; // Elbow point X
+                  const midX = 150; // Elbow point X (closer to text)
 
                   return (
                     <g key={`left-${i}`}>
                       {/* Line path with elbow */}
                       <motion.path
-                        d={`M 100 ${itemY} L ${midX} ${itemY} L ${midX + 20} ${centerY} L 360 ${centerY}`}
+                        d={`M 50 ${itemY} L ${midX} ${itemY} L ${midX + 30} ${centerY} L 360 ${centerY}`}
                         stroke="rgba(80, 209, 107, 0.3)"
                         strokeWidth={isHovered ? "1.5" : "1"}
                         fill="none"
@@ -1058,7 +1058,7 @@ function InvestorInsights() {
                       />
                       {/* Circle at the end (near text) */}
                       <motion.circle
-                        cx="100"
+                        cx="50"
                         cy={itemY}
                         r={isHovered ? "4" : "3"}
                         fill="rgba(80, 209, 107, 0.4)"
@@ -1078,13 +1078,13 @@ function InvestorInsights() {
                   const isHovered = hoveredIndex === (i + 3);
                   const itemY = 250 + (i - 1) * 120;
                   const centerY = 250;
-                  const midX = 600;
+                  const midX = 850; // Elbow point X (closer to text)
 
                   return (
                     <g key={`right-${i}`}>
                       {/* Line path with elbow */}
                       <motion.path
-                        d={`M 440 ${centerY} L ${midX - 20} ${centerY} L ${midX} ${itemY} L 700 ${itemY}`}
+                        d={`M 640 ${centerY} L ${midX - 30} ${centerY} L ${midX} ${itemY} L 950 ${itemY}`}
                         stroke="rgba(80, 209, 107, 0.3)"
                         strokeWidth={isHovered ? "1.5" : "1"}
                         fill="none"
@@ -1095,7 +1095,7 @@ function InvestorInsights() {
                       />
                       {/* Circle at the end (near text) */}
                       <motion.circle
-                        cx="700"
+                        cx="950"
                         cy={itemY}
                         r={isHovered ? "4" : "3"}
                         fill="rgba(80, 209, 107, 0.4)"
@@ -1114,7 +1114,7 @@ function InvestorInsights() {
           </div>
 
           {/* Right items - aligned in column */}
-          <div className="flex flex-col justify-center space-y-12" style={{ width: '280px' }}>
+          <div className="flex flex-col justify-center space-y-12" style={{ width: '320px' }}>
             {rightItems.map((item, i) => (
               <motion.div
                 key={i}
