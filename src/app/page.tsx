@@ -369,7 +369,7 @@ export default function Home() {
               "Разрешаем корпоративные споры",
             ]}
           />
-          <DownloadLink text='Скачать чек-лист "Готов ли ваш стартап к инвестициям"' />
+          <DownloadLink text='Получить чек-лист "Готов ли ваш стартап к инвестициям"' />
         </FadeInSection>
 
         {/* Investors */}
@@ -730,7 +730,7 @@ function BulletGrid({ items }: BulletGridProps) {
 
 function DownloadLink({ text }: { text: string }) {
   const getEmailContent = () => {
-    if (text.includes('чек-лист "Готов ли ваш стартап к инвестициям"')) {
+    if (text.includes('"Готов ли ваш стартап к инвестициям"')) {
       return {
         subject: 'Запрос чек-листа «Готов ли ваш стартап к инвестициям»',
         body: `Здравствуйте!
