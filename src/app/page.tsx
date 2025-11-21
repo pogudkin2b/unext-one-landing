@@ -729,17 +729,52 @@ function BulletGrid({ items }: BulletGridProps) {
 }
 
 function DownloadLink({ text }: { text: string }) {
+  const getEmailContent = () => {
+    if (text.includes('чек-лист "Готов ли ваш стартап к инвестициям"')) {
+      return {
+        subject: 'Запрос чек-листа «Готов ли ваш стартап к инвестициям»',
+        body: `Здравствуйте!
+Прошу отправить чек-лист «Готов ли ваш стартап к инвестициям».
+Хочу оценить текущую готовность проекта к привлечению инвестиций и понять, какие юридические вопросы стоит закрыть в первую очередь.
+
+Спасибо!`
+      };
+    } else if (text.includes('PDF "ТОП-7 юридических ошибок')) {
+      return {
+        subject: 'Запрос PDF «ТОП-7 юридических ошибок стартапов глазами инвестора»',
+        body: `Добрый день!
+Хочу получить PDF «ТОП-7 юридических ошибок стартапов глазами инвестора».
+Документ нужен, чтобы разобраться, какие юридические риски чаще всего становятся препятствием для сделки и как избежать подобных ошибок.
+
+Спасибо!`
+      };
+    } else if (text.includes('Гайд "Юридическая карта роста')) {
+      return {
+        subject: 'Запрос гайда «Юридическая карта роста компании»',
+        body: `Здравствуйте!
+Прошу выслать гайд «Юридическая карта роста компании».
+Интересует структура юридических этапов, которые важно проходить по мере роста бизнеса — от первых договорённостей до корпоративного оформления и привлечения инвестиций.
+
+Благодарю!`
+      };
+    }
+    return { subject: 'Запрос материала', body: 'Здравствуйте!\nПрошу выслать запрошенный материал.\n\nСпасибо!' };
+  };
+
+  const { subject, body } = getEmailContent();
+  const mailtoLink = `mailto:info@unext.one?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
   return (
     <motion.div variants={fadeInUp}>
-      <Link
-        href="#"
+      <a
+        href={mailtoLink}
         className="group mt-6 inline-flex items-center gap-2 rounded-lg border border-[rgba(var(--color-electric-cyan),0.3)] bg-[rgba(var(--color-electric-cyan),0.05)] px-4 py-2.5 text-sm font-medium text-[rgb(var(--color-electric-cyan))] transition-all hover:border-[rgba(var(--color-electric-cyan),0.5)] hover:bg-[rgba(var(--color-electric-cyan),0.1)]"
       >
         <svg className="h-4 w-4 transition-transform group-hover:translate-y-0.5" fill="currentColor" viewBox="0 0 20 20">
           <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
         </svg>
         {text}
-      </Link>
+      </a>
     </motion.div>
   );
 }
