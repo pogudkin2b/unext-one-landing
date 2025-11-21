@@ -356,8 +356,10 @@ export default function Home() {
             title="Сделка с инвестором — мы закроем юридическую часть за вас"
             subtitle="Когда инвестор уже ждёт, а документы ещё нет — мы приводим структуру, договорённости и IP в порядок."
           />
-          <BulletGrid
-            items={[
+
+          {/* Services Grid */}
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
               "Оформляем отношения между фаундерами",
               "Строим юридическую обвязку бизнес-модели",
               "Разрабатываем корпоративный договор",
@@ -367,9 +369,32 @@ export default function Home() {
               "Разрабатываем опционные программы",
               "Готовим к предпродажной проверке (due diligence)",
               "Разрешаем корпоративные споры",
-            ]}
-          />
-          <DownloadLink text='Получить чек-лист "Готов ли ваш стартап к инвестициям"' />
+            ].map((service, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.05 }}
+              >
+                <ServiceCard text={service} />
+              </motion.div>
+            ))}
+          </div>
+
+          {/* CTA Block */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mt-10"
+          >
+            <CTABlock
+              text='Получить чек-лист "Готов ли ваш стартап к инвестициям"'
+              buttonText="Скачать чек-лист"
+            />
+          </motion.div>
         </FadeInSection>
 
         {/* Investors */}
@@ -830,6 +855,85 @@ function FormField(props: FormFieldProps) {
         placeholder={placeholder}
         required={required}
       />
+    </div>
+  );
+}
+
+type ServiceCardProps = {
+  text: string;
+};
+
+function ServiceCard({ text }: ServiceCardProps) {
+  return (
+    <div className="group relative h-full overflow-hidden rounded-xl border border-[rgba(var(--color-electric-cyan),0.15)] bg-[rgba(var(--color-deep-navy),0.4)] p-5 backdrop-blur-sm transition-all duration-300 hover:border-[rgba(var(--color-electric-cyan),0.4)] hover:bg-[rgba(var(--color-deep-navy),0.6)] hover:shadow-lg hover:shadow-[rgba(var(--color-electric-cyan),0.1)]">
+      {/* Decorative corner */}
+      <div className="absolute right-0 top-0 h-12 w-12 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+        <div className="absolute right-0 top-0 h-px w-6 bg-gradient-to-r from-transparent to-[rgb(var(--color-electric-cyan))]" />
+        <div className="absolute right-0 top-0 h-6 w-px bg-gradient-to-b from-[rgb(var(--color-electric-cyan))] to-transparent" />
+      </div>
+
+      {/* Content */}
+      <div className="relative flex items-start gap-3">
+        {/* Check icon */}
+        <div className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-[rgba(var(--color-electric-cyan),0.1)] transition-colors duration-300 group-hover:bg-[rgba(var(--color-electric-cyan),0.2)]">
+          <svg className="h-3 w-3 text-[rgb(var(--color-electric-cyan))]" fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+          </svg>
+        </div>
+
+        {/* Text */}
+        <p className="text-sm leading-relaxed text-[rgb(var(--color-silver))] transition-colors group-hover:text-white">
+          {text}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+type CTABlockProps = {
+  text: string;
+  buttonText: string;
+};
+
+function CTABlock({ text, buttonText }: CTABlockProps) {
+  const getEmailContent = () => {
+    if (text.includes('"Готов ли ваш стартап к инвестициям"')) {
+      return {
+        subject: 'Запрос чек-листа «Готов ли ваш стартап к инвестициям»',
+        body: `Здравствуйте!
+Прошу отправить чек-лист «Готов ли ваш стартап к инвестициям».
+Хочу оценить текущую готовность проекта к привлечению инвестиций и понять, какие юридические вопросы стоит закрыть в первую очередь.
+
+Спасибо!`
+      };
+    }
+    return { subject: 'Запрос материала', body: 'Здравствуйте!\nПрошу выслать запрошенный материал.\n\nСпасибо!' };
+  };
+
+  const { subject, body } = getEmailContent();
+  const mailtoLink = `mailto:info@unext.one?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+  return (
+    <div className="flex flex-col items-center gap-4 rounded-2xl border border-[rgba(var(--color-electric-cyan),0.2)] bg-gradient-to-br from-[rgba(var(--color-deep-navy),0.6)] to-[rgba(var(--color-midnight),0.6)] p-6 backdrop-blur-sm sm:flex-row sm:justify-between sm:p-8">
+      {/* Text */}
+      <div className="text-center sm:text-left">
+        <p className="text-base font-medium text-white sm:text-lg">{text}</p>
+      </div>
+
+      {/* Button */}
+      <motion.a
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        href={mailtoLink}
+        className="group relative flex-shrink-0 overflow-hidden rounded-lg border border-[rgba(var(--color-electric-cyan),0.3)] bg-[rgba(var(--color-electric-cyan),0.1)] px-6 py-3 text-sm font-semibold text-[rgb(var(--color-electric-cyan))] transition-all hover:border-[rgba(var(--color-electric-cyan),0.5)] hover:bg-[rgba(var(--color-electric-cyan),0.15)] hover:shadow-lg hover:shadow-[rgba(var(--color-electric-cyan),0.2)]"
+      >
+        <span className="relative z-10 flex items-center gap-2">
+          <svg className="h-4 w-4 transition-transform group-hover:translate-y-0.5" fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
+          </svg>
+          {buttonText}
+        </span>
+      </motion.a>
     </div>
   );
 }
