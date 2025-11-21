@@ -119,7 +119,7 @@ export default function Home() {
               ["Кому помогаем", sections.audience],
               ["Стартапы", sections.startups],
               ["Инвесторы", sections.investors],
-              ["Корпорации & Web3", sections.corporates],
+              ["Корпорации", sections.corporates],
               ["Контакты", sections.contact],
             ].map(([label, href], i) => (
               <motion.a
