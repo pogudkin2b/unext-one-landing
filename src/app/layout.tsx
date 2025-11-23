@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "UNEXT.ONE — юридический партнёр для роста бизнеса",
-  description: "Юридическая поддержка для стартапов, инвесторов, корпораций и Web3-команд: от SAFE до M&A — быстро, понятно и без воды.",
+  description: "Юридическая поддержка для стартапов, инвесторов, корпораций и Web3-команд: от Term Sheet до M&A — быстро, понятно и без воды.",
 };
 
 export default function RootLayout({

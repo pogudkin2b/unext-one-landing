@@ -191,7 +191,7 @@ export default function Home() {
             {/* Heading - optimized for 2 lines */}
             <h1 className="mx-auto max-w-5xl text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
               Юридическая поддержка роста:{" "}
-              <span className="text-gradient-cyan">от SAFE до M&A</span> — быстро, понятно и без воды
+              <span className="text-gradient-cyan">от Term Sheet до M&A</span> — быстро, понятно и без воды
             </h1>
 
             {/* Subheading - optimized for 2 lines */}
@@ -330,10 +330,10 @@ export default function Home() {
 
             <div className="relative mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-2">
             {[
-              { icon: Rocket, label: "Стартапам", desc: "Оформляем сделки, структуру и IP", href: sections.startups, badge: "Startup" },
-              { icon: TrendingUp, label: "Инвесторам", desc: "Проверяем стартапы и защищаем сделки", href: sections.investors, badge: "Investor" },
+              { icon: Rocket, label: "Стартапам", desc: "Оформляем сделки, структуру и IP, закрываем юридические функции.", href: sections.startups, badge: "Startup" },
+              { icon: TrendingUp, label: "Инвесторам", desc: "Проверяем стартапы и сопровождаем сделки.", href: sections.investors, badge: "Investor" },
               { icon: Building2, label: "Корпорациям", desc: "Строим юридическую систему под рост и M&A", href: sections.corporates, badge: "Corporate" },
-              { icon: BarChart3, label: "COO и CFO", desc: "Снимаем рутину с юр-документов", badge: "Executive" },
+              { icon: BarChart3, label: "COO и CFO", desc: "Снимаем юридическую рутину.", badge: "Executive" },
             ].map((item, i) => (
               <motion.div
                 key={item.label}
@@ -413,7 +413,7 @@ export default function Home() {
           <SectionTitle
             tag="ДЛЯ КОРПОРАЦИЙ"
             title="Юридическая инфраструктура для роста и сделок"
-            subtitle="Группа компаний, новые рынки, M&A — под это нужна система, а не набор разрозненных договоров."
+            subtitle="Группа компаний, новые рынки, M&A — под это нужна система, а не набор разрозненных процессов."
           />
           <BulletGrid
             items={[
@@ -472,6 +472,7 @@ export default function Home() {
             variants={fadeInUp}
             className="mt-10 space-y-4 rounded-2xl border border-[rgba(var(--color-electric-cyan),0.2)] bg-gradient-to-br from-[rgba(var(--color-deep-navy),0.4)] to-[rgba(var(--color-midnight),0.4)] p-8 backdrop-blur-sm"
           >
+            <p className="text-sm text-[rgb(var(--color-silver))]/80 mb-2">Часто слышим от клиентов: «Вы самые не душные юристы из тех, с кем мы работали»</p>
             <h3 className="text-lg font-semibold text-white">Что говорят клиенты:</h3>
             {[
               "«Быстро, по делу и без бюрократии. Редкий случай, когда юристы говорят на языке бизнеса.»",
@@ -905,9 +906,9 @@ function CTABlock({ text, buttonText }: CTABlockProps) {
   const mailtoLink = `mailto:info@unext.one?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
   return (
-    <div className="flex flex-col items-center gap-4 rounded-2xl border border-[rgba(var(--color-electric-cyan),0.2)] bg-gradient-to-br from-[rgba(var(--color-deep-navy),0.6)] to-[rgba(var(--color-midnight),0.6)] p-6 backdrop-blur-sm sm:flex-row sm:justify-between sm:p-8">
+    <div className="flex flex-col items-center justify-center gap-4 rounded-2xl border border-[rgba(var(--color-electric-cyan),0.2)] bg-gradient-to-br from-[rgba(var(--color-deep-navy),0.6)] to-[rgba(var(--color-midnight),0.6)] p-6 backdrop-blur-sm sm:p-8">
       {/* Text */}
-      <div className="text-center sm:text-left">
+      <div className="text-center">
         <p className="text-base font-medium text-white sm:text-lg">{text}</p>
       </div>
 
