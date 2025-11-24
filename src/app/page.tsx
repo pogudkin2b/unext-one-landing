@@ -332,12 +332,11 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="relative mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-2">
+            <div className="relative mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {[
               { icon: Rocket, label: "Стартапам", desc: "Оформляем сделки, структуру и IP, закрываем юридические функции.", href: sections.startups, badge: "Startup" },
               { icon: TrendingUp, label: "Инвесторам", desc: "Проверяем стартапы и сопровождаем сделки.", href: sections.investors, badge: "Investor" },
               { icon: Building2, label: "Корпорациям", desc: "Строим юридическую систему под рост и M&A", href: sections.corporates, badge: "Corporate" },
-              { icon: BarChart3, label: "COO и CFO", desc: "Снимаем юридическую рутину.", badge: "Executive" },
             ].map((item, i) => (
               <motion.div
                 key={item.label}
@@ -889,7 +888,7 @@ const casesData: CaseData[] = [
     category: "corporations",
     industry: "Микроэлектроника",
     industryIcon: Cpu,
-    client: "Крупная корпорация",
+    client: "Корпорация",
     result: "Контрольный пакет",
     services: "Структурирование сделки, ДКП акций, опционы, обеспечительные соглашения, корпоративный договор",
     tag: "Высокие технологии / M&A",
