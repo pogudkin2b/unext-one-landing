@@ -1376,10 +1376,12 @@ function CasesSection() {
   const [isLoading, setIsLoading] = useState(false);
   const [selectedCase, setSelectedCase] = useState<CaseData | null>(null);
 
-  const filteredCases = casesData.filter((c) => {
-    if (activeFilter === "all") return true;
-    return c.category === activeFilter;
-  });
+  const filteredCases = casesData
+    .filter((c) => {
+      if (activeFilter === "all") return true;
+      return c.category === activeFilter;
+    })
+    .sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0)); // Featured cases first
 
   const displayedCases = showAll ? filteredCases : filteredCases.slice(0, 6);
   const hasMore = filteredCases.length > 6 && !showAll;
