@@ -1,6 +1,7 @@
 'use client';
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import type { ReactNode } from "react";
 import { useState } from "react";
@@ -519,19 +520,51 @@ export default function Home() {
           transition={{ duration: 0.6 }}
           className="border-t border-[rgba(var(--color-electric-cyan),0.15)] pt-8 text-xs text-[rgb(var(--color-silver))]/60"
         >
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="space-y-2">
-              <p>© {new Date().getFullYear()} UNEXT.ONE — юридический партнёр для роста бизнеса.</p>
-              <p>От стартапа до сделки, от фаундера до инвестора.</p>
-            </div>
-            <div className="space-y-1 text-right">
-              <p className="font-medium text-[rgb(var(--color-silver))]">Контакты:</p>
-              <a
-                href="mailto:info@unext.one"
-                className="block transition-colors hover:text-[rgb(var(--color-electric-cyan))]"
-              >
-                info@unext.one
-              </a>
+          <div className="flex flex-col gap-8">
+            {/* Main footer content */}
+            <div className="flex flex-col gap-6 sm:flex-row sm:justify-between">
+              <div className="space-y-2">
+                <p>© {new Date().getFullYear()} UNEXT.ONE — юридический партнёр для роста бизнеса.</p>
+                <p>От стартапа до сделки, от фаундера до инвестора.</p>
+              </div>
+
+              <div className="flex flex-col gap-6 sm:flex-row sm:gap-12">
+                {/* Legal info block */}
+                <div className="space-y-2">
+                  <p className="font-medium text-[rgb(var(--color-silver))] uppercase tracking-wide">Правовая информация</p>
+                  <nav className="flex flex-col gap-1.5">
+                    <Link
+                      href="/legal/user-agreement"
+                      className="transition-colors hover:text-[rgb(var(--color-electric-cyan))]"
+                    >
+                      Пользовательское соглашение
+                    </Link>
+                    <Link
+                      href="/legal/privacy-policy"
+                      className="transition-colors hover:text-[rgb(var(--color-electric-cyan))]"
+                    >
+                      Политика конфиденциальности
+                    </Link>
+                    <Link
+                      href="/legal/personal-data-consent"
+                      className="transition-colors hover:text-[rgb(var(--color-electric-cyan))]"
+                    >
+                      Согласие на обработку персональных данных
+                    </Link>
+                  </nav>
+                </div>
+
+                {/* Contact info */}
+                <div className="space-y-2">
+                  <p className="font-medium text-[rgb(var(--color-silver))] uppercase tracking-wide">Контакты</p>
+                  <a
+                    href="mailto:info@unext.one"
+                    className="block transition-colors hover:text-[rgb(var(--color-electric-cyan))]"
+                  >
+                    info@unext.one
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </motion.footer>
