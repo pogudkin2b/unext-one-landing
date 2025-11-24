@@ -483,18 +483,6 @@ export default function Home() {
                     rows={4}
                     placeholder="Раунд, сделка, структура..."
                   />
-                  <div className="space-y-1">
-                    <label className="text-xs font-medium text-[rgb(var(--color-silver))]">
-                      Pitch deck или документ (опционально)
-                    </label>
-                    <input
-                      type="file"
-                      className="w-full text-sm text-[rgb(var(--color-silver))] file:mr-4 file:rounded-lg file:border-0 file:bg-[rgba(var(--color-electric-cyan),0.1)] file:px-4 file:py-2 file:text-sm file:font-medium file:text-[rgb(var(--color-electric-cyan))] file:transition-all hover:file:bg-[rgba(var(--color-electric-cyan),0.2)]"
-                    />
-                    <p className="text-[10px] text-[rgb(var(--color-silver))]/50">
-                      Загрузка файла сейчас демонстрационная. В боевой версии подключите хранение/отправку.
-                    </p>
-                  </div>
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
