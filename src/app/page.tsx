@@ -1605,13 +1605,13 @@ function CaseModal({ caseData, onClose }: CaseModalProps) {
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 1, y: 20 }}
         transition={{ duration: 0.2, ease: "easeOut" }}
-        className="relative w-full h-full md:h-auto md:max-w-2xl md:max-h-[90vh] overflow-y-auto md:rounded-2xl border-0 md:border border-[rgba(var(--color-electric-cyan),0.3)] bg-gradient-to-br from-[rgba(var(--color-deep-navy),0.98)] to-[rgba(var(--color-midnight),0.98)] md:from-[rgba(var(--color-deep-navy),0.95)] md:to-[rgba(var(--color-midnight),0.95)] p-6 sm:p-8 shadow-2xl backdrop-blur-xl"
+        className="relative w-full h-full md:h-auto md:max-w-2xl md:max-h-[90vh] overflow-y-auto md:rounded-2xl border-0 md:border border-[rgba(var(--color-electric-cyan),0.3)] bg-gradient-to-br from-[rgba(var(--color-deep-navy),0.98)] to-[rgba(var(--color-midnight),0.98)] md:from-[rgba(var(--color-deep-navy),0.95)] md:to-[rgba(var(--color-midnight),0.95)] pt-[calc(env(safe-area-inset-top)+1rem)] pb-[calc(env(safe-area-inset-bottom)+1.5rem)] px-6 md:p-8 shadow-2xl backdrop-blur-xl"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close button - larger on mobile */}
+        {/* Close button - larger on mobile, positioned below safe area */}
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 z-10 p-3 md:p-2 rounded-full bg-[rgba(var(--color-electric-cyan),0.15)] md:bg-[rgba(var(--color-electric-cyan),0.1)] text-white md:text-[rgb(var(--color-silver))] transition-all hover:bg-[rgba(var(--color-electric-cyan),0.3)] md:hover:bg-[rgba(var(--color-electric-cyan),0.2)] hover:text-white active:scale-95"
+          className="sticky md:absolute right-4 top-4 md:top-4 z-10 float-right p-3 md:p-2 rounded-full bg-[rgba(var(--color-electric-cyan),0.15)] md:bg-[rgba(var(--color-electric-cyan),0.1)] text-white md:text-[rgb(var(--color-silver))] transition-all hover:bg-[rgba(var(--color-electric-cyan),0.3)] md:hover:bg-[rgba(var(--color-electric-cyan),0.2)] hover:text-white active:scale-95"
         >
           <X className="h-6 w-6 md:h-5 md:w-5" />
         </button>
