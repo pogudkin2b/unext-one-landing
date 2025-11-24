@@ -1593,27 +1593,27 @@ function CaseModal({ caseData, onClose }: CaseModalProps) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.2 }}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm p-4"
+      transition={{ duration: 0.15 }}
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm p-0 md:p-4"
       onClick={onClose}
       onKeyDown={handleKeyDown}
       role="dialog"
       aria-modal="true"
     >
       <motion.div
-        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+        initial={{ opacity: 0, scale: 1, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.9, y: 20 }}
-        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-        className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl border border-[rgba(var(--color-electric-cyan),0.3)] bg-gradient-to-br from-[rgba(var(--color-deep-navy),0.95)] to-[rgba(var(--color-midnight),0.95)] p-6 sm:p-8 shadow-2xl backdrop-blur-xl"
+        exit={{ opacity: 0, scale: 1, y: 20 }}
+        transition={{ duration: 0.2, ease: "easeOut" }}
+        className="relative w-full h-full md:h-auto md:max-w-2xl md:max-h-[90vh] overflow-y-auto md:rounded-2xl border-0 md:border border-[rgba(var(--color-electric-cyan),0.3)] bg-gradient-to-br from-[rgba(var(--color-deep-navy),0.98)] to-[rgba(var(--color-midnight),0.98)] md:from-[rgba(var(--color-deep-navy),0.95)] md:to-[rgba(var(--color-midnight),0.95)] p-6 sm:p-8 shadow-2xl backdrop-blur-xl"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close button */}
+        {/* Close button - larger on mobile */}
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 p-2 rounded-full bg-[rgba(var(--color-electric-cyan),0.1)] text-[rgb(var(--color-silver))] transition-all hover:bg-[rgba(var(--color-electric-cyan),0.2)] hover:text-white"
+          className="absolute right-4 top-4 z-10 p-3 md:p-2 rounded-full bg-[rgba(var(--color-electric-cyan),0.15)] md:bg-[rgba(var(--color-electric-cyan),0.1)] text-white md:text-[rgb(var(--color-silver))] transition-all hover:bg-[rgba(var(--color-electric-cyan),0.3)] md:hover:bg-[rgba(var(--color-electric-cyan),0.2)] hover:text-white active:scale-95"
         >
-          <X className="h-5 w-5" />
+          <X className="h-6 w-6 md:h-5 md:w-5" />
         </button>
 
         {/* Tag */}
@@ -1751,12 +1751,15 @@ function NewCaseCard({ data, onOpenDetail }: NewCaseCardProps) {
           {data.services}
         </p>
 
-        {/* Details button - appears on hover */}
+        {/* Details button - always visible on mobile, appears on hover on desktop */}
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : 10 }}
+          initial={{ opacity: 1, y: 0 }}
+          animate={{
+            opacity: isHovered ? 1 : 1,
+            y: isHovered ? 0 : 0
+          }}
           transition={{ duration: 0.2 }}
-          className="mt-4"
+          className="mt-4 md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0 md:transition-all md:duration-200"
         >
           <button
             onClick={() => onOpenDetail(data)}
