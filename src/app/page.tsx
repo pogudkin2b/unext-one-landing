@@ -1,11 +1,10 @@
 'use client';
 
-import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import type { ReactNode } from "react";
-import { useEffect, useState } from "react";
-import { Rocket, TrendingUp, Building2, BarChart3, type LucideIcon } from "lucide-react";
+import { useState } from "react";
+import { Rocket, TrendingUp, Building2, BarChart3, ShoppingCart, Cpu, GraduationCap, Utensils, Database, Truck, type LucideIcon } from "lucide-react";
 
 const sections = {
   audience: "#audience",
@@ -431,66 +430,9 @@ export default function Home() {
           <DownloadLink text='Гайд "Юридическая карта роста компании"' />
         </FadeInSection>
 
-        {/* Trust / Cases */}
+        {/* Cases Section */}
         <FadeInSection id="trust">
-          <SectionTitle
-            tag="ДОКАЗАТЕЛЬСТВА"
-            title="Кейсы, за которыми — сделки, инвестиции и рост"
-            subtitle="Несколько примеров того, как юридическая работа превращается в понятный результат."
-          />
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
-            {[
-              {
-                title: "Подготовка стартапа к раунду $1,5M",
-                text: "Наведён порядок в структуре, IP и документах. Все материалы для инвестора — за 5 дней.",
-              },
-              {
-                title: "Экспресс Due Diligence для бизнес-ангела",
-                text: "Выявили неочевидные риски по IP и структуре, которые могли обнулить доходность сделки.",
-              },
-              {
-                title: "Слияние двух SaaS-компаний в Европе",
-                text: "Сделка M&A с безопасной передачей клиентов, кода и команды. Учтены регуляторные требования.",
-              },
-              {
-                title: "Оптимизация корпоративной структуры группы компаний",
-                text: "Выстроена прозрачная структура под международную экспансию с учётом налоговых и регуляторных требований.",
-              },
-            ].map((caseItem, i) => (
-              <motion.div
-                key={caseItem.title}
-                variants={scaleIn}
-                custom={i}
-                whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-              >
-                <CaseCard {...caseItem} />
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div
-            variants={fadeInUp}
-            className="mt-10 space-y-4 rounded-2xl border border-[rgba(var(--color-electric-cyan),0.2)] bg-gradient-to-br from-[rgba(var(--color-deep-navy),0.4)] to-[rgba(var(--color-midnight),0.4)] p-8 backdrop-blur-sm"
-          >
-            <p className="text-sm text-[rgb(var(--color-silver))]/80 mb-2">Часто слышим от клиентов: «Вы самые не душные юристы из тех, с кем мы работали»</p>
-            <h3 className="text-lg font-semibold text-white">Что говорят клиенты:</h3>
-            {[
-              "«Быстро, по делу и без бюрократии. Редкий случай, когда юристы говорят на языке бизнеса.»",
-              "«Помогли закрыть сделку, которую мы тянули месяцами. После их ревью стало понятно, что делать.»",
-              "«Наконец-то юристы, которые понимают, как думают фаундеры и инвесторы, а не только регуляторы.»",
-            ].map((quote, i) => (
-              <motion.p
-                key={i}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="border-l-2 border-[rgb(var(--color-electric-cyan))] pl-4 text-base italic text-[rgb(var(--color-silver))]"
-              >
-                {quote}
-              </motion.p>
-            ))}
-          </motion.div>
+          <CasesSection />
         </FadeInSection>
 
         {/* Final CTA */}
@@ -697,23 +639,6 @@ function SectionTitle({ tag, title, subtitle }: SectionTitleProps) {
           {subtitle}
         </p>
       )}
-    </div>
-  );
-}
-
-type CaseCardProps = {
-  title: string;
-  text: string;
-};
-
-function CaseCard({ title, text }: CaseCardProps) {
-  return (
-    <div className="group relative h-full overflow-hidden rounded-2xl border border-[rgba(var(--color-electric-cyan),0.2)] bg-gradient-to-br from-[rgba(var(--color-deep-navy),0.6)] to-[rgba(var(--color-midnight),0.6)] p-6 backdrop-blur-sm transition-all duration-300 hover:border-[rgba(var(--color-electric-cyan),0.4)]">
-      <div className="absolute inset-0 translate-y-full bg-gradient-to-br from-[rgba(var(--color-electric-cyan),0.05)] to-transparent transition-transform duration-300 group-hover:translate-y-0" />
-      <div className="relative space-y-3">
-        <h3 className="text-lg font-semibold text-white">{title}</h3>
-        <p className="text-sm leading-relaxed text-[rgb(var(--color-silver))]">{text}</p>
-      </div>
     </div>
   );
 }
@@ -930,8 +855,335 @@ function CTABlock({ text, buttonText }: CTABlockProps) {
   );
 }
 
+// Cases data and types
+type CaseCategory = "all" | "ma" | "investments" | "startups" | "it" | "foodtech";
+
+type CaseData = {
+  id: number;
+  category: CaseCategory;
+  industry: string;
+  industryIcon: LucideIcon;
+  client: string;
+  result: string;
+  services: string;
+  tag: string;
+  tagColor: string;
+};
+
+const casesData: CaseData[] = [
+  {
+    id: 1,
+    category: "ma",
+    industry: "Розничная торговля",
+    industryIcon: ShoppingCart,
+    client: "Стартап",
+    result: "₽1.2 млрд",
+    services: "Due diligence, структурирование сделки, подготовка SPA, сопровождение закрытия",
+    tag: "Крупнейшая сделка",
+    tagColor: "from-amber-500 to-orange-500",
+  },
+  {
+    id: 2,
+    category: "ma",
+    industry: "Микроэлектроника",
+    industryIcon: Cpu,
+    client: "Корпорация",
+    result: "Контроль",
+    services: "Структурирование сделки, ДКП акций, опционы, корпоративный договор",
+    tag: "Высокие технологии",
+    tagColor: "from-blue-500 to-cyan-500",
+  },
+  {
+    id: 3,
+    category: "investments",
+    industry: "EdTech",
+    industryIcon: GraduationCap,
+    client: "Венчурный фонд",
+    result: "$2 млн",
+    services: "Due diligence, SAFE, SHA, опционная программа для сотрудников",
+    tag: "Международная сделка",
+    tagColor: "from-purple-500 to-pink-500",
+  },
+  {
+    id: 4,
+    category: "startups",
+    industry: "FoodTech",
+    industryIcon: Utensils,
+    client: "Инновационное производство",
+    result: "Холдинг",
+    services: "Абонентское сопровождение, реорганизации, IP-стратегия, диверсификация бизнеса",
+    tag: "Долгосрочное партнерство",
+    tagColor: "from-green-500 to-emerald-500",
+  },
+  {
+    id: 5,
+    category: "investments",
+    industry: "IT/Big Data",
+    industryIcon: Database,
+    client: "Инвестор",
+    result: "€900 тыс",
+    services: "Корпоративная реструктуризация, подготовка к IPO, международное структурирование",
+    tag: "IPO",
+    tagColor: "from-indigo-500 to-violet-500",
+  },
+  {
+    id: 6,
+    category: "ma",
+    industry: "Логистика/IT",
+    industryIcon: Truck,
+    client: "Стартап",
+    result: "50% топ-3",
+    services: "10 договоров купли-продажи, опционы, конвертируемый заем, корпоративные события",
+    tag: "Комплексная сделка",
+    tagColor: "from-teal-500 to-cyan-500",
+  },
+];
+
+const filterCategories: { key: CaseCategory; label: string }[] = [
+  { key: "all", label: "Все кейсы" },
+  { key: "ma", label: "M&A и продажи" },
+  { key: "investments", label: "Инвестиции" },
+  { key: "startups", label: "Стартапы" },
+  { key: "it", label: "IT и Tech" },
+  { key: "foodtech", label: "FoodTech" },
+];
+
+function CasesSection() {
+  const [activeFilter, setActiveFilter] = useState<CaseCategory>("all");
+  const [showAll, setShowAll] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const filteredCases = casesData.filter((c) => {
+    if (activeFilter === "all") return true;
+    if (activeFilter === "it") return c.industry.toLowerCase().includes("it") || c.industry.toLowerCase().includes("tech") || c.industryIcon === Database || c.industryIcon === Cpu;
+    if (activeFilter === "foodtech") return c.category === "startups" && c.industryIcon === Utensils;
+    return c.category === activeFilter;
+  });
+
+  const displayedCases = showAll ? filteredCases : filteredCases.slice(0, 6);
+  const hasMore = filteredCases.length > 6 && !showAll;
+
+  const handleShowMore = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setShowAll(true);
+      setIsLoading(false);
+    }, 500);
+  };
+
+  const handleFilterChange = (filter: CaseCategory) => {
+    setActiveFilter(filter);
+    setShowAll(false);
+  };
+
+  return (
+    <div className="space-y-8">
+      <SectionTitle
+        tag="КЕЙСЫ"
+        title="Реальные результаты в цифрах"
+        subtitle="Примеры того, как юридическая работа превращается в понятный результат для бизнеса."
+      />
+
+      {/* Filter tabs */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="flex flex-wrap justify-center gap-2"
+      >
+        {filterCategories.map((filter) => (
+          <motion.button
+            key={filter.key}
+            onClick={() => handleFilterChange(filter.key)}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
+              activeFilter === filter.key
+                ? "bg-gradient-to-r from-[rgb(var(--color-electric-cyan))] to-[rgb(var(--color-amber))] text-[rgb(var(--color-midnight))] shadow-lg shadow-[rgba(var(--color-electric-cyan),0.3)]"
+                : "border border-[rgba(var(--color-electric-cyan),0.2)] bg-[rgba(var(--color-deep-navy),0.4)] text-[rgb(var(--color-silver))] hover:border-[rgba(var(--color-electric-cyan),0.4)] hover:bg-[rgba(var(--color-deep-navy),0.6)]"
+            }`}
+          >
+            {filter.label}
+          </motion.button>
+        ))}
+      </motion.div>
+
+      {/* Cases grid */}
+      <motion.div
+        layout
+        className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+      >
+        {displayedCases.length > 0 ? (
+          displayedCases.map((caseItem, i) => (
+            <motion.div
+              key={caseItem.id}
+              layout
+              initial={{ opacity: 0, y: 30, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+            >
+              <NewCaseCard data={caseItem} />
+            </motion.div>
+          ))
+        ) : (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="col-span-full flex flex-col items-center justify-center py-16 text-center"
+          >
+            <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[rgba(var(--color-electric-cyan),0.1)]">
+              <Building2 className="h-8 w-8 text-[rgb(var(--color-electric-cyan))]" />
+            </div>
+            <p className="text-lg font-medium text-white">Кейсы в этой категории скоро появятся</p>
+            <p className="mt-2 text-sm text-[rgb(var(--color-silver))]/60">Выберите другую категорию или посмотрите все кейсы</p>
+          </motion.div>
+        )}
+      </motion.div>
+
+      {/* Show more button */}
+      {hasMore && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="flex justify-center"
+        >
+          <motion.button
+            onClick={handleShowMore}
+            disabled={isLoading}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="group relative overflow-hidden rounded-full border border-[rgba(var(--color-electric-cyan),0.3)] bg-[rgba(var(--color-deep-navy),0.4)] px-8 py-3 text-sm font-semibold text-[rgb(var(--color-electric-cyan))] transition-all hover:border-[rgba(var(--color-electric-cyan),0.5)] hover:bg-[rgba(var(--color-deep-navy),0.6)] disabled:opacity-50"
+          >
+            {isLoading ? (
+              <span className="flex items-center gap-2">
+                <motion.span
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                  className="inline-block h-4 w-4 rounded-full border-2 border-[rgb(var(--color-electric-cyan))] border-t-transparent"
+                />
+                Загрузка...
+              </span>
+            ) : (
+              <span className="flex items-center gap-2">
+                Показать ещё кейсы
+                <svg className="h-4 w-4 transition-transform group-hover:translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            )}
+          </motion.button>
+        </motion.div>
+      )}
+
+      {/* Client testimonials */}
+      <motion.div
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="mt-10 space-y-4 rounded-2xl border border-[rgba(var(--color-electric-cyan),0.2)] bg-gradient-to-br from-[rgba(var(--color-deep-navy),0.4)] to-[rgba(var(--color-midnight),0.4)] p-8 backdrop-blur-sm"
+      >
+        <p className="text-sm text-[rgb(var(--color-silver))]/80 mb-2">Часто слышим от клиентов: «Вы самые не душные юристы из тех, с кем мы работали»</p>
+        <h3 className="text-lg font-semibold text-white">Что говорят клиенты:</h3>
+        {[
+          "«Быстро, по делу и без бюрократии. Редкий случай, когда юристы говорят на языке бизнеса.»",
+          "«Помогли закрыть сделку, которую мы тянули месяцами. После их ревью стало понятно, что делать.»",
+          "«Наконец-то юристы, которые понимают, как думают фаундеры и инвесторы, а не только регуляторы.»",
+        ].map((quote, i) => (
+          <motion.p
+            key={i}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: i * 0.1 }}
+            className="border-l-2 border-[rgb(var(--color-electric-cyan))] pl-4 text-base italic text-[rgb(var(--color-silver))]"
+          >
+            {quote}
+          </motion.p>
+        ))}
+      </motion.div>
+    </div>
+  );
+}
+
+type NewCaseCardProps = {
+  data: CaseData;
+};
+
+function NewCaseCard({ data }: NewCaseCardProps) {
+  const [isHovered, setIsHovered] = useState(false);
+  const Icon = data.industryIcon;
+
+  return (
+    <motion.div
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      whileHover={{ y: -8, transition: { duration: 0.3 } }}
+      className="group relative h-full overflow-hidden rounded-2xl border border-[rgba(var(--color-electric-cyan),0.15)] bg-[rgba(var(--color-deep-navy),0.4)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(var(--color-electric-cyan),0.4)] hover:bg-[rgba(var(--color-deep-navy),0.6)] hover:shadow-lg hover:shadow-[rgba(var(--color-electric-cyan),0.1)]"
+    >
+      {/* Corner accent */}
+      <div className="absolute right-0 top-0 h-20 w-20 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+        <div className="absolute right-0 top-0 h-px w-8 bg-gradient-to-r from-transparent to-[rgb(var(--color-electric-cyan))]" />
+        <div className="absolute right-0 top-0 h-8 w-px bg-gradient-to-b from-[rgb(var(--color-electric-cyan))] to-transparent" />
+      </div>
+
+      {/* Tag */}
+      <div className="absolute left-4 top-4 z-10">
+        <span className={`inline-flex items-center rounded-full bg-gradient-to-r ${data.tagColor} px-3 py-1 text-xs font-semibold text-white shadow-md`}>
+          {data.tag}
+        </span>
+      </div>
+
+      {/* Content */}
+      <div className="p-6 pt-14">
+        {/* Industry with icon */}
+        <div className="mb-4 flex items-center gap-2 text-sm text-[rgb(var(--color-silver))]/70">
+          <Icon className="h-4 w-4 text-[rgb(var(--color-electric-cyan))]" />
+          <span>{data.industry}</span>
+          <span className="ml-auto rounded-md border border-[rgba(var(--color-electric-cyan),0.2)] bg-[rgba(var(--color-electric-cyan),0.05)] px-2 py-0.5 text-xs font-medium text-[rgb(var(--color-silver))]">
+            {data.client}
+          </span>
+        </div>
+
+        {/* Result - highlighted */}
+        <div className="mb-4">
+          <p className="text-xs font-medium uppercase tracking-wide text-[rgb(var(--color-silver))]/50">Результат</p>
+          <p className="mt-1 text-3xl font-bold text-gradient-cyan">
+            {data.result}
+          </p>
+        </div>
+
+        {/* Services description */}
+        <p className="line-clamp-3 text-sm leading-relaxed text-[rgb(var(--color-silver))]/80">
+          {data.services}
+        </p>
+
+        {/* Details button - appears on hover */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : 10 }}
+          transition={{ duration: 0.2 }}
+          className="mt-4"
+        >
+          <button className="flex items-center gap-2 text-sm font-semibold text-[rgb(var(--color-electric-cyan))] transition-colors hover:text-[rgb(var(--color-amber))]">
+            Подробнее
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </motion.div>
+      </div>
+
+      {/* Bottom decorative line */}
+      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[rgba(var(--color-electric-cyan),0.3)] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+    </motion.div>
+  );
+}
+
 function InvestorInsights() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const leftItems = [
     "Анализируем юридические и корпоративные риски",
