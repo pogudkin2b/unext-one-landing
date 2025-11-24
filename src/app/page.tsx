@@ -1715,9 +1715,6 @@ function NewCaseCard({ data, onOpenDetail }: NewCaseCardProps) {
         <div className="mb-4 flex items-center gap-2 text-sm text-[rgb(var(--color-silver))]/70">
           <Icon className="h-4 w-4 text-[rgb(var(--color-electric-cyan))]" />
           <span>{data.industry}</span>
-          <span className="ml-auto rounded-md border border-[rgba(var(--color-electric-cyan),0.2)] bg-[rgba(var(--color-electric-cyan),0.05)] px-2 py-0.5 text-xs font-medium text-[rgb(var(--color-silver))]">
-            {data.client}
-          </span>
         </div>
 
         {/* Result - highlighted */}
