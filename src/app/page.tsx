@@ -8,7 +8,7 @@ import {
   Rocket, TrendingUp, Building2, BarChart3, ShoppingCart, Cpu, GraduationCap,
   Utensils, Database, Truck, Car, Shield, Bot, Beaker, Landmark, Wheat,
   Construction, Radio, Factory, Layers, Pill, Brain, Briefcase, Music,
-  Package, Stethoscope, Monitor, type LucideIcon
+  Package, Stethoscope, Monitor, X, type LucideIcon
 } from "lucide-react";
 
 const sections = {
@@ -874,6 +874,12 @@ type CaseData = {
   tag: string;
   tagColor: string;
   featured: boolean;
+  // Extended data for modal
+  fullTitle?: string;
+  forWhom?: string;
+  workFormat?: string;
+  whatWeDid?: string[];
+  dealAmount?: string;
 };
 
 const casesData: CaseData[] = [
@@ -889,6 +895,17 @@ const casesData: CaseData[] = [
     tag: "Высокие технологии / M&A",
     tagColor: "from-blue-500 to-cyan-500",
     featured: true,
+    fullTitle: "Покупка контрольного пакета производителя микроэлектроники",
+    forWhom: "Корпорация, приобретающая контрольный пакет акций производственной компании в области микроэлектроники",
+    workFormat: "Консультационные и юридические услуги по сделке приобретения",
+    whatWeDid: [
+      "Структурировали сделку по покупке контрольного пакета акций",
+      "Подготовили договор купли-продажи акций (ДКП)",
+      "Подготовили проекты опционов",
+      "Подготовили обеспечительные соглашения",
+      "Подготовили корпоративный договор"
+    ],
+    dealAmount: "Не раскрывается"
   },
   {
     id: "case_foodtech_holding",
@@ -901,6 +918,16 @@ const casesData: CaseData[] = [
     tag: "Долгосрочное партнёрство",
     tagColor: "from-green-500 to-emerald-500",
     featured: false,
+    fullTitle: "Холдинг в инновационном производстве натуральных продуктов",
+    forWhom: "Корпорация в сфере производства натуральных продуктов питания",
+    workFormat: "Долгосрочное абонентское сопровождение",
+    whatWeDid: [
+      "Оказывали абонентское сопровождение со стадии стартапа",
+      "Консультировали по охране интеллектуальной собственности и стратегии её коммерциализации",
+      "Сопровождали несколько внутригрупповых реорганизаций",
+      "Консультировали по построению холдинговой структуры при диверсификации бизнеса и выделении направлений в отдельные компании"
+    ],
+    dealAmount: "Не раскрывается"
   },
   {
     id: "case_it_bigdata_corporate",
@@ -913,6 +940,18 @@ const casesData: CaseData[] = [
     tag: "Комплексное сопровождение",
     tagColor: "from-indigo-500 to-violet-500",
     featured: false,
+    fullTitle: "IT / Big Data: от стартапа до судебной защиты",
+    forWhom: "Корпорация в сфере IT и Big Data, аналитические сервисы",
+    workFormat: "Проектное и текущее сопровождение",
+    whatWeDid: [
+      "Сопроводили создание компании на стадии стартапа",
+      "Разработали договорную схему работы с исполнителями",
+      "Разработали договорную схему совместной разработки продуктов",
+      "Подготовили лицензионные договоры и договоры на разработку и внедрение программных продуктов",
+      "Сопровождали в суде по группе исков о пресечении незаконного использования ПО",
+      "Консультировали по вопросам текущей деятельности"
+    ],
+    dealAmount: "Не раскрывается"
   },
   {
     id: "case_international_it_launch",
@@ -925,6 +964,15 @@ const casesData: CaseData[] = [
     tag: "Международная сделка / IT",
     tagColor: "from-purple-500 to-pink-500",
     featured: true,
+    fullTitle: "Выход зарубежного IT-перевозчика на российский рынок",
+    forWhom: "Зарубежная корпорация в сфере IT и пассажирских перевозок",
+    workFormat: "Сопровождение выхода на рынок",
+    whatWeDid: [
+      "Адаптировали бизнес-модель к требованиям российского законодательства в области пассажирских перевозок",
+      "Разработали партнёрские соглашения с локальными перевозчиками для разных типов сотрудничества, согласовали их с материнской компанией",
+      "Разработали политику защиты персональных данных, включая требования GDPR"
+    ],
+    dealAmount: "Не раскрывается"
   },
   // ИНВЕСТОРЫ
   {
@@ -938,6 +986,15 @@ const casesData: CaseData[] = [
     tag: "Инвестиции high-tech",
     tagColor: "from-amber-500 to-orange-500",
     featured: false,
+    fullTitle: "Инвестиции ₽50 млн в систему безопасности дорожного движения",
+    forWhom: "Инвестиционный фонд",
+    workFormat: "Полное сопровождение сделки инвестирования",
+    whatWeDid: [
+      "Провели due diligence стартапа",
+      "Подготовили корпоративный договор",
+      "Подготовили комплект документов по предоставлению инвестиций"
+    ],
+    dealAmount: "₽50 млн"
   },
   {
     id: "case_robotics_components",
@@ -950,6 +1007,15 @@ const casesData: CaseData[] = [
     tag: "Инвестиции high-tech",
     tagColor: "from-blue-500 to-cyan-500",
     featured: false,
+    fullTitle: "Робототехника: инвестиции в разработчика комплектующих",
+    forWhom: "Инвестиционный фонд",
+    workFormat: "Полное сопровождение сделки",
+    whatWeDid: [
+      "Провели комплексную юридическую проверку (DD)",
+      "Подготовили транзакционную документацию (корпоративный договор, устав, протоколы корпоративных событий)",
+      "Сопроводили закрытие сделки"
+    ],
+    dealAmount: "Не раскрывается"
   },
   {
     id: "case_medtech_300m",
@@ -962,6 +1028,15 @@ const casesData: CaseData[] = [
     tag: "Инвестиции high-tech",
     tagColor: "from-rose-500 to-pink-500",
     featured: true,
+    fullTitle: "Медицинские импланты: ₽300 млн инвестиций",
+    forWhom: "Инвестиционный фонд",
+    workFormat: "Полное сопровождение инвестиционной сделки",
+    whatWeDid: [
+      "Провели комплексный IP-DD (более 100 объектов)",
+      "Подготовили транзакционную документацию (корпоративный договор, устав, договоры купли-продажи долей, протоколы корпоративных событий)",
+      "Сопроводили закрытие сделки"
+    ],
+    dealAmount: "₽300 млн"
   },
   {
     id: "case_ai_chemistry",
@@ -974,6 +1049,15 @@ const casesData: CaseData[] = [
     tag: "Инвестиции high-tech / AI",
     tagColor: "from-violet-500 to-purple-500",
     featured: true,
+    fullTitle: "AI-платформа для органической и медицинской химии",
+    forWhom: "Инвестиционный фонд",
+    workFormat: "Полное сопровождение сделки",
+    whatWeDid: [
+      "Провели комплексный due diligence (legal, finance, tax)",
+      "Подготовили транзакционную документацию (корпоративный договор, устав, опционы, договоры займа, протоколы корпоративных событий)",
+      "Сопроводили закрытие сделки"
+    ],
+    dealAmount: "Не раскрывается"
   },
   {
     id: "case_funds_3_5b",
@@ -986,6 +1070,15 @@ const casesData: CaseData[] = [
     tag: "Фондовая структура",
     tagColor: "from-amber-500 to-yellow-500",
     featured: true,
+    fullTitle: "Создание сети фондов на ₽3,5 млрд",
+    forWhom: "Инвестиционный фонд, оператор фонда фондов",
+    workFormat: "Консультации и структурирование фондов",
+    whatWeDid: [
+      "Консультировали по возможным структурам создания фондов по заданным параметрам",
+      "Сопроводили создание 5 фондов в форме ДИТ",
+      "Консультировали по юридической стратегии выхода из инвестиций"
+    ],
+    dealAmount: "₽3,5 млрд (совокупно)"
   },
   {
     id: "case_agro_and_concession",
@@ -998,6 +1091,15 @@ const casesData: CaseData[] = [
     tag: "Инвестиции low-tech",
     tagColor: "from-green-500 to-lime-500",
     featured: false,
+    fullTitle: "Инвестиции в агрокомплекс и концессионный проект",
+    forWhom: "Инвестиционный фонд",
+    workFormat: "Полное юридическое сопровождение",
+    whatWeDid: [
+      "Провели DD",
+      "Подготовили транзакционную документацию: Term Sheet (TS), Investment Agreement (IA), Shareholders' Agreement (SHA), устав ООО, четыре опциона",
+      "Сопроводили инвестиции в концессионный проект (TS, SHA, устав ООО)"
+    ],
+    dealAmount: "Не раскрывается"
   },
   {
     id: "case_tower_jv",
@@ -1010,6 +1112,14 @@ const casesData: CaseData[] = [
     tag: "Совместное предприятие",
     tagColor: "from-cyan-500 to-teal-500",
     featured: false,
+    fullTitle: "JV по строительству башен сотовой связи",
+    forWhom: "Инвестиционный фонд",
+    workFormat: "Юридическое сопровождение инвестиций в JV",
+    whatWeDid: [
+      "Структурировали сделку, подготовили Term Sheet",
+      "Подготовили основную транзакционную документацию (SHA, устав ООО, решения органов управления, 10 опционов)"
+    ],
+    dealAmount: "Не раскрывается"
   },
   {
     id: "case_quarry_acquisition",
@@ -1022,6 +1132,18 @@ const casesData: CaseData[] = [
     tag: "M&A / приобретение актива",
     tagColor: "from-stone-500 to-slate-500",
     featured: false,
+    fullTitle: "Покупка компании с карьером",
+    forWhom: "Группа бизнес-ангелов",
+    workFormat: "Полное сопровождение сделки M&A",
+    whatWeDid: [
+      "Провели DD компании и её активов",
+      "Разработали и согласовали Term Sheet",
+      "Разработали договоры купли-продажи долей",
+      "Полностью сопроводили закрытие и расчёты",
+      "Сопроводили смену менеджмента",
+      "Сопроводили привлечение проектного финансирования со стороны банка"
+    ],
+    dealAmount: "Не раскрывается"
   },
   {
     id: "case_brick_factory_acquisition",
@@ -1034,6 +1156,16 @@ const casesData: CaseData[] = [
     tag: "M&A / приобретение бизнеса",
     tagColor: "from-orange-500 to-red-500",
     featured: false,
+    fullTitle: "Покупка кирпичного завода",
+    forWhom: "Группа бизнес-ангелов",
+    workFormat: "Полное сопровождение сделки M&A",
+    whatWeDid: [
+      "Провели DD компании и её активов",
+      "Разработали и сопроводили заключение договоров купли-продажи долей",
+      "Сопроводили смену менеджмента",
+      "Построили обновлённую структуру корпоративного управления"
+    ],
+    dealAmount: "Не раскрывается"
   },
   {
     id: "case_composites_foreign_investor",
@@ -1046,6 +1178,15 @@ const casesData: CaseData[] = [
     tag: "Сделка с иностранным инвестором",
     tagColor: "from-indigo-500 to-blue-500",
     featured: false,
+    fullTitle: "Вход иностранного инвестора в портфельную компанию",
+    forWhom: "Инвестиционный фонд",
+    workFormat: "Сопровождение последующего раунда с иностранным инвестором",
+    whatWeDid: [
+      "Подготовили и согласовали изменённый комплект инвестиционной документации с учётом трансграничных требований иностранного законодательства",
+      "Переработали структуру корпоративного управления портфельной компании",
+      "Сопроводили несколько раундов инвестиций со стороны обновлённого состава инвесторов"
+    ],
+    dealAmount: "Не раскрывается"
   },
   {
     id: "case_pharma_entry_exit",
@@ -1058,6 +1199,14 @@ const casesData: CaseData[] = [
     tag: "Инвестиции high-tech / exit",
     tagColor: "from-emerald-500 to-teal-500",
     featured: false,
+    fullTitle: "Инвестиции и выход из фармацевтической компании",
+    forWhom: "Инвестиционный фонд",
+    workFormat: "Сопровождение инвестиций и выхода",
+    whatWeDid: [
+      "Сопроводили инвестирование в компанию по производству фармацевтических препаратов",
+      "Сопроводили выход фонда из инвестиции после достижения инвестиционных целей"
+    ],
+    dealAmount: "Не раскрывается"
   },
   // СТАРТАПЫ
   {
@@ -1071,6 +1220,15 @@ const casesData: CaseData[] = [
     tag: "Привлечение инвестиций",
     tagColor: "from-rose-500 to-pink-500",
     featured: false,
+    fullTitle: "MedTech-стартап: фонд + бизнес-ангел",
+    forWhom: "MedTech-стартап",
+    workFormat: "Консультации и абонентское сопровождение",
+    whatWeDid: [
+      "Консультировали при привлечении инвестиций от инвестиционного фонда и бизнес-ангела",
+      "Консультировали по охране интеллектуальной собственности (ПО, полезные модели, изобретения, ноу-хау)",
+      "Перевели клиента на абонентское обслуживание (подписка)"
+    ],
+    dealAmount: "Не раскрывается"
   },
   {
     id: "case_saas_hybrid_30m",
@@ -1083,6 +1241,16 @@ const casesData: CaseData[] = [
     tag: "Привлечение инвестиций",
     tagColor: "from-blue-500 to-indigo-500",
     featured: false,
+    fullTitle: "SaaS для гибридного формата работы: ₽30 млн",
+    forWhom: "Стартап в сфере IT / SaaS",
+    workFormat: "Консультации и сопровождение инвестиционной сделки",
+    whatWeDid: [
+      "Консультировали при привлечении инвестиций от инвестиционного фонда",
+      "Структурировали сделку",
+      "Составили транзакционную документацию",
+      "Сопроводили закрытие сделки"
+    ],
+    dealAmount: "₽30 млн"
   },
   {
     id: "case_marketplace_top3",
@@ -1095,6 +1263,19 @@ const casesData: CaseData[] = [
     tag: "От стартапа до сделки со стратегом",
     tagColor: "from-amber-500 to-orange-500",
     featured: true,
+    fullTitle: "Маркетплейс услуг по установке и сборке товаров",
+    forWhom: "IT-стартап (маркетплейс услуг по установке и сборке товаров)",
+    workFormat: "Долгосрочное сопровождение + M&A",
+    whatWeDid: [
+      "Спроектировали юридическую структуру сервиса",
+      "Подготовили юридическую документацию для функционирования сервиса",
+      "Консультировали при привлечении нескольких раундов инвестиций",
+      "Сопровождали текущие операции (абонентское обслуживание)",
+      "Сопроводили сделку продажи 50% доли стратегическому инвестору (топ-3 логистических компаний РФ)",
+      "Подготовили и заключили 10 договоров купли-продажи долей, 10 опционов, конвертируемый заём",
+      "Сопроводили комплекс сделок по выходу основателей из компании"
+    ],
+    dealAmount: "Не раскрывается"
   },
   {
     id: "case_bigdata_two_rounds",
@@ -1107,6 +1288,15 @@ const casesData: CaseData[] = [
     tag: "Early stage сопровождение",
     tagColor: "from-violet-500 to-purple-500",
     featured: false,
+    fullTitle: "Big Data-стартап: от фаундеров до инвестиций",
+    forWhom: "Стартап в сфере IT и Big Data",
+    workFormat: "Сопровождение ранней стадии и инвестраундов",
+    whatWeDid: [
+      "Оформили отношения между фаундерами",
+      "Создали компанию",
+      "Сопроводили привлечение двух раундов инвестиций"
+    ],
+    dealAmount: "Не раскрывается"
   },
   {
     id: "case_ecoproducts_trademark",
@@ -1119,6 +1309,14 @@ const casesData: CaseData[] = [
     tag: "IP-защита",
     tagColor: "from-green-500 to-emerald-500",
     featured: false,
+    fullTitle: "Эко-продукты питания: защита товарного знака",
+    forWhom: "Стартап по производству экологичных продуктов питания",
+    workFormat: "IP-сопровождение и судебная защита",
+    whatWeDid: [
+      "Сопроводили регистрацию товарных знаков",
+      "Сопроводили в суде по иску о нарушении охраны товарного знака"
+    ],
+    dealAmount: "Не раскрывается"
   },
   {
     id: "case_music_streaming",
@@ -1131,6 +1329,17 @@ const casesData: CaseData[] = [
     tag: "Регулирование / IP",
     tagColor: "from-pink-500 to-rose-500",
     featured: false,
+    fullTitle: "Музыкальный стриминговый сервис",
+    forWhom: "Стартап — музыкальный стриминговый сервис",
+    workFormat: "Комплексное юридическое сопровождение",
+    whatWeDid: [
+      "Разработали политику конфиденциальности",
+      "Разработали пользовательское соглашение",
+      "Сопровождали заключение соглашений с правообладателями и авторскими обществами",
+      "Сопроводили регистрацию товарных знаков",
+      "Консультировали по вопросам привлечения инвестиций"
+    ],
+    dealAmount: "Не раскрывается"
   },
   {
     id: "case_cargo_uberization",
@@ -1143,6 +1352,15 @@ const casesData: CaseData[] = [
     tag: "Юридическая архитектура сервиса",
     tagColor: "from-teal-500 to-cyan-500",
     featured: false,
+    fullTitle: "Уберизация грузоперевозок",
+    forWhom: "Стартап в сфере IT и грузоперевозок",
+    workFormat: "Проектирование структуры и консультации по экзиту",
+    whatWeDid: [
+      "Спроектировали юридическую структуру сервиса",
+      "Подготовили юридическую документацию, необходимую для функционирования сервиса",
+      "Консультировали по экзиту фаундеров при продаже стратегическому инвестору"
+    ],
+    dealAmount: "Не раскрывается"
   },
 ];
 
@@ -1157,6 +1375,7 @@ function CasesSection() {
   const [activeFilter, setActiveFilter] = useState<CaseCategory>("all");
   const [showAll, setShowAll] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedCase, setSelectedCase] = useState<CaseData | null>(null);
 
   const filteredCases = casesData.filter((c) => {
     if (activeFilter === "all") return true;
@@ -1227,7 +1446,7 @@ function CasesSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
-              <NewCaseCard data={caseItem} />
+              <NewCaseCard data={caseItem} onOpenDetail={setSelectedCase} />
             </motion.div>
           ))
         ) : (
@@ -1245,39 +1464,55 @@ function CasesSection() {
         )}
       </motion.div>
 
-      {/* Show more button */}
-      {hasMore && (
+      {/* Show more / Show less buttons */}
+      {(hasMore || showAll) && filteredCases.length > 6 && (
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           className="flex justify-center"
         >
-          <motion.button
-            onClick={handleShowMore}
-            disabled={isLoading}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="group relative overflow-hidden rounded-full border border-[rgba(var(--color-electric-cyan),0.3)] bg-[rgba(var(--color-deep-navy),0.4)] px-8 py-3 text-sm font-semibold text-[rgb(var(--color-electric-cyan))] transition-all hover:border-[rgba(var(--color-electric-cyan),0.5)] hover:bg-[rgba(var(--color-deep-navy),0.6)] disabled:opacity-50"
-          >
-            {isLoading ? (
+          {hasMore ? (
+            <motion.button
+              onClick={handleShowMore}
+              disabled={isLoading}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="group relative overflow-hidden rounded-full border border-[rgba(var(--color-electric-cyan),0.3)] bg-[rgba(var(--color-deep-navy),0.4)] px-8 py-3 text-sm font-semibold text-[rgb(var(--color-electric-cyan))] transition-all hover:border-[rgba(var(--color-electric-cyan),0.5)] hover:bg-[rgba(var(--color-deep-navy),0.6)] disabled:opacity-50"
+            >
+              {isLoading ? (
+                <span className="flex items-center gap-2">
+                  <motion.span
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                    className="inline-block h-4 w-4 rounded-full border-2 border-[rgb(var(--color-electric-cyan))] border-t-transparent"
+                  />
+                  Загрузка...
+                </span>
+              ) : (
+                <span className="flex items-center gap-2">
+                  Показать ещё кейсы
+                  <svg className="h-4 w-4 transition-transform group-hover:translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              )}
+            </motion.button>
+          ) : (
+            <motion.button
+              onClick={() => setShowAll(false)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="group relative overflow-hidden rounded-full border border-[rgba(var(--color-electric-cyan),0.3)] bg-[rgba(var(--color-deep-navy),0.4)] px-8 py-3 text-sm font-semibold text-[rgb(var(--color-electric-cyan))] transition-all hover:border-[rgba(var(--color-electric-cyan),0.5)] hover:bg-[rgba(var(--color-deep-navy),0.6)]"
+            >
               <span className="flex items-center gap-2">
-                <motion.span
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                  className="inline-block h-4 w-4 rounded-full border-2 border-[rgb(var(--color-electric-cyan))] border-t-transparent"
-                />
-                Загрузка...
-              </span>
-            ) : (
-              <span className="flex items-center gap-2">
-                Показать ещё кейсы
-                <svg className="h-4 w-4 transition-transform group-hover:translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                Показать меньше
+                <svg className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
                 </svg>
               </span>
-            )}
-          </motion.button>
+            </motion.button>
+          )}
         </motion.div>
       )}
 
@@ -1308,15 +1543,148 @@ function CasesSection() {
           </motion.p>
         ))}
       </motion.div>
+
+      {/* Case Detail Modal */}
+      {selectedCase && (
+        <CaseModal caseData={selectedCase} onClose={() => setSelectedCase(null)} />
+      )}
     </div>
+  );
+}
+
+// Case Detail Modal Component
+type CaseModalProps = {
+  caseData: CaseData;
+  onClose: () => void;
+};
+
+function CaseModal({ caseData, onClose }: CaseModalProps) {
+  const Icon = caseData.industryIcon;
+
+  // Close on escape key
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Escape') onClose();
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm p-4"
+      onClick={onClose}
+      onKeyDown={handleKeyDown}
+      role="dialog"
+      aria-modal="true"
+    >
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.9, y: 20 }}
+        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+        className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl border border-[rgba(var(--color-electric-cyan),0.3)] bg-gradient-to-br from-[rgba(var(--color-deep-navy),0.95)] to-[rgba(var(--color-midnight),0.95)] p-6 sm:p-8 shadow-2xl backdrop-blur-xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close button */}
+        <button
+          onClick={onClose}
+          className="absolute right-4 top-4 p-2 rounded-full bg-[rgba(var(--color-electric-cyan),0.1)] text-[rgb(var(--color-silver))] transition-all hover:bg-[rgba(var(--color-electric-cyan),0.2)] hover:text-white"
+        >
+          <X className="h-5 w-5" />
+        </button>
+
+        {/* Tag */}
+        <div className="mb-4">
+          <span className={`inline-flex items-center rounded-full bg-gradient-to-r ${caseData.tagColor} px-3 py-1 text-xs font-semibold text-white shadow-md`}>
+            {caseData.tag}
+          </span>
+        </div>
+
+        {/* Title */}
+        <h3 className="text-2xl font-bold text-white mb-2">
+          {caseData.fullTitle || caseData.result}
+        </h3>
+
+        {/* Industry & Client */}
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <div className="flex items-center gap-2 text-sm text-[rgb(var(--color-silver))]/70">
+            <Icon className="h-4 w-4 text-[rgb(var(--color-electric-cyan))]" />
+            <span>{caseData.industry}</span>
+          </div>
+          <span className="rounded-md border border-[rgba(var(--color-electric-cyan),0.2)] bg-[rgba(var(--color-electric-cyan),0.05)] px-2 py-0.5 text-xs font-medium text-[rgb(var(--color-silver))]">
+            {caseData.client}
+          </span>
+        </div>
+
+        {/* Result */}
+        <div className="mb-6 p-4 rounded-xl bg-[rgba(var(--color-electric-cyan),0.05)] border border-[rgba(var(--color-electric-cyan),0.15)]">
+          <p className="text-xs font-medium uppercase tracking-wide text-[rgb(var(--color-silver))]/50 mb-1">Результат</p>
+          <p className="text-2xl font-bold text-gradient-cyan">
+            {caseData.result}
+          </p>
+        </div>
+
+        {/* For whom */}
+        {caseData.forWhom && (
+          <div className="mb-4">
+            <p className="text-xs font-medium uppercase tracking-wide text-[rgb(var(--color-silver))]/50 mb-1">Для кого</p>
+            <p className="text-sm text-[rgb(var(--color-silver))]">{caseData.forWhom}</p>
+          </div>
+        )}
+
+        {/* Work format */}
+        {caseData.workFormat && (
+          <div className="mb-4">
+            <p className="text-xs font-medium uppercase tracking-wide text-[rgb(var(--color-silver))]/50 mb-1">Формат работы</p>
+            <p className="text-sm text-[rgb(var(--color-silver))]">{caseData.workFormat}</p>
+          </div>
+        )}
+
+        {/* What we did */}
+        {caseData.whatWeDid && caseData.whatWeDid.length > 0 && (
+          <div className="mb-4">
+            <p className="text-xs font-medium uppercase tracking-wide text-[rgb(var(--color-silver))]/50 mb-2">Что сделали</p>
+            <ul className="space-y-2">
+              {caseData.whatWeDid.map((item, i) => (
+                <li key={i} className="flex items-start gap-3 text-sm text-[rgb(var(--color-silver))]">
+                  <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-r from-[rgb(var(--color-electric-cyan))] to-[rgb(var(--color-amber))]" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {/* Deal amount */}
+        {caseData.dealAmount && (
+          <div className="mb-6 pt-4 border-t border-[rgba(var(--color-electric-cyan),0.1)]">
+            <p className="text-xs font-medium uppercase tracking-wide text-[rgb(var(--color-silver))]/50 mb-1">Сумма сделки</p>
+            <p className="text-sm font-medium text-[rgb(var(--color-electric-cyan))]">{caseData.dealAmount}</p>
+          </div>
+        )}
+
+        {/* CTA Button */}
+        <motion.a
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          href="#contact"
+          onClick={onClose}
+          className="mt-4 block w-full text-center rounded-full bg-gradient-to-r from-[rgb(var(--color-electric-cyan))] to-[rgb(var(--color-amber))] px-6 py-3 text-sm font-bold text-[rgb(var(--color-midnight))] shadow-lg shadow-[rgba(var(--color-electric-cyan),0.3)] transition-all hover:shadow-xl hover:shadow-[rgba(var(--color-electric-cyan),0.5)]"
+        >
+          Обсудить похожую задачу
+        </motion.a>
+      </motion.div>
+    </motion.div>
   );
 }
 
 type NewCaseCardProps = {
   data: CaseData;
+  onOpenDetail: (caseData: CaseData) => void;
 };
 
-function NewCaseCard({ data }: NewCaseCardProps) {
+function NewCaseCard({ data, onOpenDetail }: NewCaseCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const Icon = data.industryIcon;
 
@@ -1371,7 +1739,10 @@ function NewCaseCard({ data }: NewCaseCardProps) {
           transition={{ duration: 0.2 }}
           className="mt-4"
         >
-          <button className="flex items-center gap-2 text-sm font-semibold text-[rgb(var(--color-electric-cyan))] transition-colors hover:text-[rgb(var(--color-amber))]">
+          <button
+            onClick={() => onOpenDetail(data)}
+            className="flex items-center gap-2 text-sm font-semibold text-[rgb(var(--color-electric-cyan))] transition-colors hover:text-[rgb(var(--color-amber))]"
+          >
             Подробнее
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
