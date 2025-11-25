@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { SignatureBadge } from "@/components/SignatureBadge";
 
 export const metadata: Metadata = {
   title: "UNEXT.ONE — юридический партнёр для роста бизнеса",
@@ -16,7 +15,6 @@ export default function RootLayout({
     <html lang="ru">
       <body>
         {children}
-        <SignatureBadge />
       </body>
     </html>
   );

@@ -11,6 +11,7 @@ import {
   Construction, Radio, Factory, Layers, Pill, Brain, Briefcase, Music,
   Package, Stethoscope, Monitor, X, type LucideIcon
 } from "lucide-react";
+import { SignatureBadge } from "@/components/SignatureBadge";
 
 const sections = {
   audience: "#audience",
@@ -1941,6 +1942,9 @@ function InvestorInsights() {
           </div>
         </div>
       </div>
+
+      {/* Signature Badge */}
+      <SignatureBadge />
     </div>
   );
 }

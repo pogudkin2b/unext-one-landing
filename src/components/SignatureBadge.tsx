@@ -7,9 +7,9 @@ export function SignatureBadge() {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-4 z-40 flex justify-center px-4">
+    <div className="flex justify-center px-4 pb-0">
       <div
-        className="pointer-events-auto group relative"
+        className="group relative"
         onMouseEnter={() => setIsExpanded(true)}
         onMouseLeave={() => setIsExpanded(false)}
         onClick={() => setIsExpanded(!isExpanded)}
