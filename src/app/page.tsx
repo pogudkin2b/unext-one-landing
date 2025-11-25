@@ -569,6 +569,9 @@ export default function Home() {
             </div>
           </div>
         </motion.footer>
+
+        {/* Signature Badge */}
+        <SignatureBadge />
       </div>
     </main>
   );
@@ -1942,9 +1945,6 @@ function InvestorInsights() {
           </div>
         </div>
       </div>
-
-      {/* Signature Badge */}
-      <SignatureBadge />
     </div>
   );
 }
