@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export function SignatureBadge() {
   return (
-    <div className="flex justify-center px-4 pb-4 pt-8">
+    <div className="flex justify-center px-4 pb-6 pt-8">
       <Link
         href="https://pogudkin.com"
         target="_blank"
