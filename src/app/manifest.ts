@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'UNEXT.ONE — юридический партнёр для роста бизнеса',
     short_name: 'UNEXT.ONE',
-    description: 'Юридическая поддержка для стартапов, инвесторов, корпораций и Web3-команд',
+    description: 'Юридическая поддержка для стартапов, инвесторов и корпораций',
     start_url: '/',
     display: 'standalone',
     background_color: '#0a0f1a',

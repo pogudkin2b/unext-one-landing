@@ -3,7 +3,7 @@ export function StructuredData() {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
     name: 'UNEXT.ONE',
-    description: 'Юридическая поддержка для стартапов, инвесторов, корпораций и Web3-команд',
+    description: 'Юридическая поддержка для стартапов, инвесторов и корпораций',
     url: 'https://unext.one',
     logo: 'https://unext.one/web-app-manifest-512x512.png',
     email: 'info@unext.one',
@@ -16,8 +16,7 @@ export function StructuredData() {
       'Юридические услуги',
       'Корпоративное право',
       'M&A сделки',
-      'Инвестиционные сделки',
-      'Web3 консалтинг'
+      'Инвестиционные сделки'
     ],
     areaServed: {
       '@type': 'Country',
