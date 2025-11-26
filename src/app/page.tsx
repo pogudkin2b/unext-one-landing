@@ -156,7 +156,7 @@ export default function Home() {
       </motion.header>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-6xl px-6 pb-20 pt-32 space-y-32">
+      <div className="relative z-10 mx-auto max-w-6xl px-6 pb-8 pt-32 space-y-32">
         {/* Hero */}
         <FadeInSection id="hero">
           {/* Badge - centered */}
