@@ -1,0 +1,14 @@
+# Разрешаем индексацию для всех поисковиков
+User-agent: *
+Allow: /
+
+# Указываем расположение sitemap
+Sitemap: https://unext.one/sitemap.xml
+
+# Правила для Яндекса
+User-agent: Yandex
+Allow: /
+
+# Правила для Google
+User-agent: Googlebot
+Allow: /
